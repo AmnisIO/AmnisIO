@@ -12,10 +12,12 @@ We hope to enable you to write, in TypeScript, a blinking LEDs program:
 ```js
 import { run, Sources, Sinks, HIGH, LOW } from './drivers/arduino-uno';
 
+// toggles a LOW/HIGH value
 function toggle(value: number): number {
   return number == HIGH ? LOW : HIGH;
 }
 
+// takes Sources and returns Sinks
 function main(arduino: Sources): Sinks {
   const in12$ = arduino.D12$;
   const in13$ = arduino.D13$;
@@ -27,6 +29,7 @@ function main(arduino: Sources): Sinks {
   };
 }
 
+// runs the main function on the arduino-uno
 run(main);
 ```
 and be able to run the program in your Arduino/Genuino UNO, for example.
