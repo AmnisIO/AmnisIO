@@ -130,7 +130,49 @@ void riot_arduino_uno_read_inputs(riot_arduino_uno_sources *sources) {
   sinks struct point to null. 
 */
 bool riot_arduino_uno_is_sinks_empty(riot_arduino_uno_sinks *sinks) {
-  // TODO: Return true if no streams are present in sink, ie no output is required.
+  if(sinks->D0 != NULL)
+    return false;
+  if(sinks->D1 != NULL)
+    return false;
+  if(sinks->D2 != NULL)
+    return false;
+  if(sinks->D3 != NULL)
+    return false;
+  if(sinks->D4 != NULL)
+    return false;
+  if(sinks->D5 != NULL)
+    return false;
+  if(sinks->D6 != NULL)
+    return false;
+  if(sinks->D7 != NULL)
+    return false;
+  if(sinks->D8 != NULL)
+    return false;
+  if(sinks->D9 != NULL)
+    return false;
+  if(sinks->D10 != NULL)
+    return false;
+  if(sinks->D11 != NULL)
+    return false;
+  if(sinks->D12 != NULL)
+    return false;
+  if(sinks->D13 != NULL)
+    return false;
+  if(sinks->LED != NULL)
+    return false;
+  if(sinks->A0 != NULL)
+    return false;
+  if(sinks->A1 != NULL)
+    return false;
+  if(sinks->A2 != NULL)
+    return false;
+  if(sinks->A3 != NULL)
+    return false;
+  if(sinks->A4 != NULL)
+    return false;
+  if(sinks->A5 != NULL)
+    return false;
+  return true;
 }
 
 int riot_arduino_uno_run(riot_arduino_uno_main main) {
