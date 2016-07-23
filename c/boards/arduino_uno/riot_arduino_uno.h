@@ -76,6 +76,6 @@ typedef struct riot_arduino_uno_sources_t {
 riot_arduino_uno_sinks* riot_arduino_uno_sinks_create();
 riot_arduino_uno_sources* riot_arduino_uno_sources_create();
 riot_arduino_uno_sinks* *riot_arduino_uno_main(riot_arduino_uno_sources* sources);
-int riot_arduino_uno_run(riot_arduino_uno_main main, riot_arduino_uno_sources* sources);
+int riot_arduino_uno_run(riot_arduino_uno_main main);
 
 #endif
