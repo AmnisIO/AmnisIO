@@ -1,14 +1,12 @@
 #include "stream_of_byte_map.h"
 
-struct mapped_byte_stream {
+typedef struct mapped_byte_stream {
 	void(*next)(stream_of_byte *self, byte v);
 	void(*error)(stream_of_byte *self, byte e);
 	void(*complete)(stream_of_byte *self);
 	varray *listeners;
 	byte(*map)(byte value);
-};
-
-typedef struct mapped_byte_stream mapped_stream_of_byte;
+} mapped_stream_of_byte;
 
 void mapped_stream_of_byte_next(stream_of_byte *stream, byte v) {
 	mapped_stream_of_byte* mapped_stream = (mapped_stream_of_byte*)stream;
