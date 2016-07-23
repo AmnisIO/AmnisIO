@@ -7,15 +7,15 @@
   LED - D13 is also the on board LED
 */
 
-/**
-  The outputs to the board. The outputs are written internally.
-*/
-
 #ifndef RIOT_ARDUINO_UNO_H
 #define RIOT_ARDUINO_UNO_H
 
 #include "stream_of_byte.h"
 
+/**
+  The outputs to the board. The outputs are written internally, we just
+  have to use these streams to write.
+*/
 typedef struct riot_arduino_uno_sinks_t {
   stream_of_byte *D0;
   stream_of_byte *D1;
