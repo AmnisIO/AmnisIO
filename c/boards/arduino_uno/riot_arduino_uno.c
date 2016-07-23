@@ -1,5 +1,6 @@
 #include "riot_arduino_uno.h"
 #include "utils.h"
+#include "Arduino.h"
 #include<stdbool.h>
 
 riot_arduino_uno_sinks* riot_arduino_uno_sinks_create() {
@@ -43,11 +44,11 @@ riot_arduino_uno_sources* riot_arduino_uno_sources_create() {
 
 /**
   We map the output streams in the sinks struct to the board's
-  outputs here. For simplicity, we mrite all outputs as bytes for
+  outputs here. For simplicity, we write all outputs as bytes for
   now, later we can use bool for digital and 0-255 for analog/pwm.
 */
 void riot_arduino_uno_map_sinks_to_write_outputs(riot_arduino_uno_sinks *sinks) {
-  // TODO: Map sinks to write outputs 
+  // TODO: Map sinks to write outputs
 }
 
 /**
