@@ -19,7 +19,7 @@ void mapped_stream_of_byte_next(stream_of_byte *stream, byte v) {
 	}
 };
 
-mapped_stream_of_byte* mapped_stream_of_byte_create(mapper_function_from_byte_to_byte map) {
+mapped_stream_of_byte* mapped_stream_of_byte_create(map_byte_to_byte map) {
 	mapped_stream_of_byte* stream = xmalloc(sizeof(mapped_stream_of_byte));
 	stream_of_byte_init(stream);
 	stream->map = map;
@@ -27,7 +27,7 @@ mapped_stream_of_byte* mapped_stream_of_byte_create(mapper_function_from_byte_to
 	return stream;
 }
 
-stream_of_byte* stream_of_byte_map(stream_of_byte *stream, mapper_function_from_byte_to_byte mapper) {
+stream_of_byte* stream_of_byte_map(stream_of_byte *stream, map_byte_to_byte mapper) {
 	mapped_stream_of_byte* mapped_stream = mapped_stream_of_byte_create(mapper);
 	stream_of_byte* mapped_listener = (stream_of_byte*)mapped_stream;
 	return (stream_of_byte*)stream_add_listener(stream, mapped_listener);
