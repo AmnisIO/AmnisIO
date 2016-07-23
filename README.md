@@ -1,5 +1,5 @@
 # RIoT
-A reactive way to write IoT - Reactive IoT (RIoT)
+A reactive way to write IoT - Reactive IoT (RIoT), inspired by [Cycle.js](http://cycle.js.org/)
 
 ## The what, the why, and the how
 `riot` will enable you to write IoT programs in a reactive way.
