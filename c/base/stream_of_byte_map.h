@@ -6,4 +6,4 @@
 typedef byte(*mapper_function_from_byte_to_byte)(byte value);
 stream_of_byte* stream_of_byte_map(stream_of_byte *stream, mapper_function_from_byte_to_byte mapper);
 
-#endif // !INCLUDE_STREAM_OF_BYTE_MAP
+#endif
