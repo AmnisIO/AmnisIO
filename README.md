@@ -34,7 +34,7 @@ export default main;
 ```
 and be able to run the program in your Arduino/Genuino UNO, for example.
 
-The arduino shown here is an example, we will be building towards every platform that is targetable.
+The arduino shown here is an example, we will be building towards every platform that is targetable. We will be using the wonderful [platformio](https://github.com/platformio/platformio) in order to accomplish this.
 
 ## Contributing
 With such a lofty goal, we will need all the help we can get. However, at the moment, we are in a ver nascent phase and it would take us some time to set up some guidelines towards contribution, etc. Please feel free to open up issues on this repo till then.
