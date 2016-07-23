@@ -10,7 +10,7 @@ Towards this, we will be building a stream library in C, and we will using an ex
 
 We hope to enable you to write, in TypeScript, a blinking LEDs program:
 ```js
-import { Sources, Sinks, HIGH, LOW } from './drivers/arduino-uno';
+import { run, Sources, Sinks, HIGH, LOW } from './drivers/arduino-uno';
 
 function toggle(value: number): number {
   return number == HIGH ? LOW : HIGH;
@@ -27,7 +27,7 @@ function main(arduino: Sources): Sinks {
   };
 }
 
-export default main;
+run(main);
 ```
 and be able to run the program in your Arduino/Genuino UNO, for example.
 
