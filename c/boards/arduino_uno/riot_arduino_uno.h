@@ -72,3 +72,6 @@ struct riot_arduino_uno_sources_t {
 };
 
 typedef struct riot_arduino_uno_sources_t riot_arduino_uno_sources;
+
+riot_arduino_uno_sinks* riot_arduino_uno_sinks_create();
+riot_arduino_uno_sources* riot_arduino_uno_sources_create();
