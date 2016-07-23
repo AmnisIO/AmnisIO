@@ -13,16 +13,15 @@ We hope to enable you to write, in TypeScript, a blinking LEDs program:
 import { ISources, ISinks } from './definitions';
 import { HIGH, LOW } from './drivers/arduino';
 
+function toggle(value: number): number {
+  return number == HIGH ? LOW : HIGH;
+}
+
 function main(sources: ISources): ISinks {
   const in12$ = sources.arduino.pin12$;
   const in13$ = sources.arduino.pin13$;
-  const out12$ = in12$
-    .map(value =>
-      value == HIGH ? LOW : HIGH);
-  const out13$ =
-    in13$
-      .map(value =>
-        value == HIGH ? LOW : HIGH);
+  const out12$ = in12$.map(toggle);
+  const out13$ = in13$.map(toggle);
   return {
     arduino: {
       pin12$: out12$,
