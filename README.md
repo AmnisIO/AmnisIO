@@ -1,5 +1,5 @@
-# riot
-A reactive way to write IoT - Reactive IoT (RIOT)
+# RIoT
+A reactive way to write IoT - Reactive IoT (RIoT)
 
 ## The what, the why, and the how
 `riot` will enable you to write IoT programs in a reactive way.
