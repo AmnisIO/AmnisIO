@@ -33,9 +33,9 @@ function main(arduino: Sources): Sinks {
 // runs the main function on the arduino-uno
 run(main);
 ```
-and be able to run the program in your Arduino/Genuino UNO, for example.
+and be able to run the program in your Arduino/Genuino UNO, for example. We will transpile this into C code that is compatible with the board that you choose to write your IoT code on, and the board will run the code natively.
 
-The arduino shown here is an example, we will be building towards every platform that is targetable. We will be using the wonderful [platformio](https://github.com/platformio/platformio) in order to accomplish this.
+The *Arduino UNO* used here is an example, we will be building towards every platform that is targetable. We will be using the wonderful [platformio](https://github.com/platformio/platformio) in order to accomplish this.
 
 ## Status
 ### C
