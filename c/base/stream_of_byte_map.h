@@ -3,7 +3,8 @@
 
 #include "stream_of_byte.h"
 
-typedef byte(*mapper_function_from_byte_to_byte)(byte value);
-stream_of_byte* stream_of_byte_map(stream_of_byte *stream, mapper_function_from_byte_to_byte mapper);
-
+byte(*map_byte_to_byte)(byte);
+void(*map_byte)(byte);
+stream_of_byte* stream_of_byte_map(stream_of_byte *stream, map_byte_to_byte map);
+stream_of_byte* stream_of_byte_map(stream_of_byte *stream, map_byte map);
 #endif
