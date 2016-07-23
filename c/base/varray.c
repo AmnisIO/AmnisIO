@@ -1,7 +1,6 @@
 #include "varray.h";
 
-void varray_init(varray **array)
-{
+void varray_init(varray **array) {
 	*array = (varray*)malloc(sizeof(varray));
 	(*array)->memory = NULL;
 	(*array)->allocated = 0;
@@ -9,8 +8,7 @@ void varray_init(varray **array)
 	(*array)->index = -1;
 }
 
-void varray_push(varray *array, void *data)
-{
+void varray_push(varray *array, void *data) {
 	size_t toallocate;
 	size_t size = sizeof(void*);
 	if ((array->allocated - array->used) < size) {
@@ -23,13 +21,11 @@ void varray_push(varray *array, void *data)
 	array->used = array->used + size;
 }
 
-int varray_length(varray *array)
-{
+int varray_length(varray *array) {
 	return array->index + 1;
 }
 
-void varray_clear(varray *array)
-{
+void varray_clear(varray *array) {
 	int i;
 	for (i = 0; i < varray_length(array); i++)
 	{
@@ -39,22 +35,19 @@ void varray_clear(varray *array)
 	array->index = -1;
 }
 
-void varray_free(varray *array)
-{
+void varray_free(varray *array) {
 	free(array->memory);
 	free(array);
 }
 
-void* varray_get(varray *array, int index)
-{
+void* varray_get(varray *array, int index) {
 	if (index < 0 || index > array->index)
 		return NULL;
 
 	return array->memory[index];
 }
 
-void varray_insert(varray *array, int index, void *data)
-{
+void varray_insert(varray *array, int index, void *data) {
 	if (index < 0 || index > array->index)
 		return;
 

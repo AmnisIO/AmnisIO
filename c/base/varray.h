@@ -3,8 +3,7 @@
 
 #include <stdio.h>
 
-typedef struct varray_t
-{
+typedef struct varray_t {
 	void **memory;
 	size_t allocated;
 	size_t used;

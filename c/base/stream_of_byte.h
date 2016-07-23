@@ -6,14 +6,12 @@
 
 typedef uint8_t byte;
 
-struct byte_stream {
-	void(*next)(struct byte_stream *self, byte v);
-	void(*error)(struct byte_stream *self, byte e);
-	void(*complete)(struct byte_stream *self);
+typedef struct stream_of_byte_t {
+	void(*next)(struct stream_of_byte_t *self, byte v);
+	void(*error)(struct stream_of_byte_t *self, byte e);
+	void(*complete)(struct stream_of_byte_t *self);
 	varray *listeners;
-};
-
-typedef struct byte_stream stream_of_byte;
+} stream_of_byte;
 
 stream_of_byte* stream_of_byte_create();
 stream_of_byte* stream_of_byte_init();
