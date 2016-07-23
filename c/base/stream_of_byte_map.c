@@ -32,3 +32,39 @@ stream_of_byte* stream_of_byte_map(stream_of_byte *stream, map_byte_to_byte mapp
 	stream_of_byte* mapped_listener = (stream_of_byte*)mapped_stream;
 	return (stream_of_byte*)stream_add_listener(stream, mapped_listener);
 }
+
+typedef struct mapped_stream_of_byte_with_index_t {
+	void(*next)(stream_of_byte *self, byte v);
+	void(*error)(stream_of_byte *self, byte e);
+	void(*complete)(stream_of_byte *self);
+	varray *listeners;
+	map_byte_to_byte_with_index map;
+  int index;
+} mapped_stream_of_byte_with_index;
+
+void mapped_stream_of_byte_with_index_next(stream_of_byte *stream, byte v) {
+	mapped_stream_of_byte_with_index* mapped_stream = (mapped_stream_of_byte_with_index*)stream;
+  mapped_stream->index = mapped_stream->index+1;
+	byte mapped = mapped_stream->map(v, mapped_stream->index);
+	varray *array = stream->listeners;
+	int length = varray_length(array);
+	for (int i = 0; i < length; i++) {
+		stream_of_byte *listener = ((stream_of_byte *)varray_get(array, i));
+		listener->next(listener, mapped);
+	}
+};
+
+mapped_stream_of_byte_with_index* mapped_stream_of_byte_with_index_create(map_byte_to_byte_with_index map) {
+	mapped_stream_of_byte_with_index* stream = xmalloc(sizeof(mapped_stream_of_byte));
+	stream_of_byte_init(stream);
+	stream->map = map;
+  stream->index = -1;
+	stream->next = mapped_stream_of_byte_with_index_next;
+	return stream;
+}
+
+stream_of_byte* stream_of_byte_map(stream_of_byte *stream, map_byte_to_byte_with_index mapper) {
+	mapped_stream_of_byte_with_index* mapped_stream = mapped_stream_of_byte_with_index_create(mapper);
+	stream_of_byte* mapped_listener = (stream_of_byte*)mapped_stream;
+	return (stream_of_byte*)stream_add_listener(stream, mapped_listener);
+}
