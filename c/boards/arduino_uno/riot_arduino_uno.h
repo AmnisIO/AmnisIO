@@ -58,9 +58,9 @@ struct riot_arduino_uno_sources_t {
   stream_of_byte *D12;
   stream_of_byte *D13;
   /**
-    The following are diabled, because stream of unit16_t is not
+    The following are diabled, because stream_of_unit16_t is not
     available in the base stream library yet. Hence we are not able
-    to use the 10-bit resolution analog inputs.
+    to use the 10-bit resolution analog inputs as of now.
   */
   // stream_of_uint16_t *A0;
   // stream_of_uint16_t *A1;
