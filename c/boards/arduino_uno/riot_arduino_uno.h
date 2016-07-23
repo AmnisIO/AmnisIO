@@ -1,6 +1,7 @@
 /**
   Arduino/Genuino UNO
   PIN Configuration
+  Refer: https://www.arduino.cc/en/uploads/Main/ArduinoUno_r2_front.jpg
   D0-D13 - 14 digital IN/OUT pins
   A0-A5 - 6 analog IN, digital OUT pins
   LED - D13 is also the on board LED
