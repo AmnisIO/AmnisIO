@@ -1,6 +1,6 @@
 #include "stream_of_byte_map.h"
 
-typedef struct mapped_byte_stream {
+typedef struct mapped_stream_of_byte_t {
 	void(*next)(stream_of_byte *self, byte v);
 	void(*error)(stream_of_byte *self, byte e);
 	void(*complete)(stream_of_byte *self);
