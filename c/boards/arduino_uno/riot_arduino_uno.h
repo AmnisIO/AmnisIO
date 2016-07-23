@@ -11,6 +11,9 @@
   The outputs to the board. The outputs are written internally.
 */
 
+#ifndef RIOT_ARDUINO_UNO_H
+#define RIOT_ARDUINO_UNO_H
+
 #include "stream_of_byte.h"
 
 struct riot_arduino_uno_sinks_t {
@@ -76,3 +79,5 @@ typedef struct riot_arduino_uno_sources_t riot_arduino_uno_sources;
 
 riot_arduino_uno_sinks* riot_arduino_uno_sinks_create();
 riot_arduino_uno_sources* riot_arduino_uno_sources_create();
+
+#endif
