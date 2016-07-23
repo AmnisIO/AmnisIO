@@ -1,7 +1,5 @@
 #include "stream_of_byte.h"
 
-int counter_stream = 0;
-
 void stream_of_byte_next(stream_of_byte *stream, byte v) {
 	varray *array = stream->listeners;
 	int length = varray_length(array);
