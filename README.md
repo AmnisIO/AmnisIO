@@ -37,5 +37,27 @@ and be able to run the program in your Arduino/Genuino UNO, for example.
 
 The arduino shown here is an example, we will be building towards every platform that is targetable. We will be using the wonderful [platformio](https://github.com/platformio/platformio) in order to accomplish this.
 
+## Status
+### C
+###### Stream Library
+* Supports only streams of `byte`s (or uint8, 0-255)
+* The only possible operator is MAP
+
+###### Drivers
+* Arduino UNO driver is working
+* Other drivers need to be added
+
+### JavaScript / TypeScript
+###### Stream Library
+* xstream is already released
+* It supports 26 operators
+
+###### Drivers
+* Arduino UNO driver is to be added
+
+### Transpiler
+* TypeScript Compiler API is to be used
+* Work not yet started
+
 ## Contributing
 With such a lofty goal, we will need all the help we can get. However, at the moment, we are in a ver nascent phase and it would take us some time to set up some guidelines towards contribution, etc. Please feel free to open up issues on this repo till then.
