@@ -16,7 +16,7 @@
 
 #include "stream_of_byte.h"
 
-struct riot_arduino_uno_sinks_t {
+typedef struct riot_arduino_uno_sinks_t {
   stream_of_byte *D0;
   stream_of_byte *D1;
   stream_of_byte *D2;
@@ -38,15 +38,13 @@ struct riot_arduino_uno_sinks_t {
   stream_of_byte *A4;
   stream_of_byte *A5;
   stream_of_byte *LED;
-};
-
-typedef struct riot_arduino_uno_sinks_t riot_arduino_uno_sinks;
+} riot_arduino_uno_sinks;
 
 /**
   The inputs that we can read from the arduino uno. Reading of
   the inputs is written internally, we just have to use these streams.
 */
-struct riot_arduino_uno_sources_t {
+typedef struct riot_arduino_uno_sources_t {
   stream_of_byte *D0;
   stream_of_byte *D1;
   stream_of_byte *D2;
@@ -73,9 +71,7 @@ struct riot_arduino_uno_sources_t {
   // stream_of_uint16_t *A4;
   // stream_of_uint16_t *A5;
   // stream_of_uint16_t *LED;
-};
-
-typedef struct riot_arduino_uno_sources_t riot_arduino_uno_sources;
+} riot_arduino_uno_sources;
 
 riot_arduino_uno_sinks* riot_arduino_uno_sinks_create();
 riot_arduino_uno_sources* riot_arduino_uno_sources_create();
