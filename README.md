@@ -10,24 +10,21 @@ Towards this, we will be building a stream library in C, and we will using an ex
 
 We hope to enable you to write, in TypeScript, a blinking LEDs program:
 ```js
-import { Sources, Sinks } from './definitions';
-import { HIGH, LOW } from './drivers/arduino';
+import { ArduinoUnoSources, ArduinoUnoSinks, HIGH, LOW } from './drivers/arduino-uno';
 
 function toggle(value: number): number {
   return number == HIGH ? LOW : HIGH;
 }
 
-function main(sources: Sources): Sinks {
-  const in12$ = sources.arduino.pin12$;
-  const in13$ = sources.arduino.pin13$;
+function main(arduino: ArduinoUnoSources): ArduinoUnoSinks {
+  const in12$ = arduino.D12$;
+  const in13$ = arduino.D13$;
   const out12$ = in12$.map(toggle);
   const out13$ = in13$.map(toggle);
   return {
-    arduino: {
-      pin12$: out12$,
-      pin13$: out13$
-    }
-  }
+    D12$: out12$,
+    D13$: out13$
+  };
 }
 
 export default main;
