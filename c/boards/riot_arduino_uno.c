@@ -64,13 +64,181 @@ static const uint8_t A5 = 19;
 static const uint8_t A6 = 20;
 static const uint8_t A7 = 21;
 
+byte riot_arduino_uno_write_to_D0(byte value) {
+  pinMode(D0, OUTPUT);
+  digitalWrite(D0, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D1(byte value) {
+  pinMode(D1, OUTPUT);
+  digitalWrite(D1, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D2(byte value) {
+  pinMode(D2, OUTPUT);
+  digitalWrite(D2, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D3(byte value) {
+  pinMode(D3, OUTPUT);
+  digitalWrite(D3, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D4(byte value) {
+  pinMode(D4, OUTPUT);
+  digitalWrite(D4, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D5(byte value) {
+  pinMode(D5, OUTPUT);
+  digitalWrite(D5, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D6(byte value) {
+  pinMode(D6, OUTPUT);
+  digitalWrite(D6, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D7(byte value) {
+  pinMode(D7, OUTPUT);
+  digitalWrite(D7, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D8(byte value) {
+  pinMode(D8, OUTPUT);
+  digitalWrite(D8, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D9(byte value) {
+  pinMode(D9, OUTPUT);
+  digitalWrite(D9, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D10(byte value) {
+  pinMode(D10, OUTPUT);
+  digitalWrite(D10, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D11(byte value) {
+  pinMode(D11, OUTPUT);
+  digitalWrite(D11, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D12(byte value) {
+  pinMode(D12, OUTPUT);
+  digitalWrite(D12, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_D13(byte value) {
+  pinMode(D13, OUTPUT);
+  digitalWrite(D13, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_LED(byte value) {
+  pinMode(LED, OUTPUT);
+  digitalWrite(LED, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_A0(byte value) {
+  pinMode(A0, OUTPUT);
+  digitalWrite(A0, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_A1(byte value) {
+  pinMode(A1, OUTPUT);
+  digitalWrite(A1, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_A2(byte value) {
+  pinMode(A2, OUTPUT);
+  digitalWrite(A2, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_A3(byte value) {
+  pinMode(A3, OUTPUT);
+  digitalWrite(A3, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_A4(byte value) {
+  pinMode(A4, OUTPUT);
+  digitalWrite(A4, value);
+  return 0;
+}
+byte riot_arduino_uno_write_to_A5(byte value) {
+  pinMode(A5, OUTPUT);
+  digitalWrite(A5, value);
+  return 0;
+}
+
 /**
   We map the output streams in the sinks struct to the board's
   outputs here. For simplicity, we write all outputs as bytes for
   now, later we can use bool for digital and 0-255 for analog/pwm.
 */
 void riot_arduino_uno_map_sinks_to_write_outputs(riot_arduino_uno_sinks *sinks) {
-  // TODO: Map sinks to write outputs
+  if(sinks->D0 != NULL) {
+    stream_of_byte_map(sinks->D0, riot_arduino_uno_write_to_D0);
+  }
+  if(sinks->D1 != NULL) {
+    stream_of_byte_map(sinks->D1, riot_arduino_uno_write_to_D1);
+  }
+  if(sinks->D2 != NULL) {
+    stream_of_byte_map(sinks->D2, riot_arduino_uno_write_to_D2);
+  }
+  if(sinks->D3 != NULL) {
+    stream_of_byte_map(sinks->D3, riot_arduino_uno_write_to_D3);
+  }
+  if(sinks->D4 != NULL) {
+    stream_of_byte_map(sinks->D4, riot_arduino_uno_write_to_D4);
+  }
+  if(sinks->D5 != NULL) {
+    stream_of_byte_map(sinks->D5, riot_arduino_uno_write_to_D5);
+  }
+  if(sinks->D6 != NULL) {
+    stream_of_byte_map(sinks->D6, riot_arduino_uno_write_to_D6);
+  }
+  if(sinks->D7 != NULL) {
+    stream_of_byte_map(sinks->D7, riot_arduino_uno_write_to_D7);
+  }
+  if(sinks->D8 != NULL) {
+    stream_of_byte_map(sinks->D8, riot_arduino_uno_write_to_D8);
+  }
+  if(sinks->D9 != NULL) {
+    stream_of_byte_map(sinks->D9, riot_arduino_uno_write_to_D9);
+  }
+  if(sinks->D10 != NULL) {
+    stream_of_byte_map(sinks->D10, riot_arduino_uno_write_to_D10);
+  }
+  if(sinks->D11 != NULL) {
+    stream_of_byte_map(sinks->D11, riot_arduino_uno_write_to_D11);
+  }
+  if(sinks->D12 != NULL) {
+    stream_of_byte_map(sinks->D12, riot_arduino_uno_write_to_D12);
+  }
+  if(sinks->D13 != NULL) {
+    stream_of_byte_map(sinks->D13, riot_arduino_uno_write_to_D13);
+  }
+  if(sinks->LED != NULL) {
+    stream_of_byte_map(sinks->LED, riot_arduino_uno_write_to_LED);
+  }
+  if(sinks->A0 != NULL) {
+    stream_of_byte_map(sinks->A0, riot_arduino_uno_write_to_A0);
+  }
+  if(sinks->A1 != NULL) {
+    stream_of_byte_map(sinks->A1, riot_arduino_uno_write_to_A1);
+  }
+  if(sinks->A2 != NULL) {
+    stream_of_byte_map(sinks->A2, riot_arduino_uno_write_to_A2);
+  }
+  if(sinks->A3 != NULL) {
+    stream_of_byte_map(sinks->A3, riot_arduino_uno_write_to_A3);
+  }
+  if(sinks->A4 != NULL) {
+    stream_of_byte_map(sinks->A4, riot_arduino_uno_write_to_A4);
+  }
+  if(sinks->A5 != NULL) {
+    stream_of_byte_map(sinks->A5, riot_arduino_uno_write_to_A5);
+  }
 }
 
 /**
