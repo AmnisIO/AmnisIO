@@ -4,7 +4,7 @@
 #include "varray.h"
 #include "utils.h"
 
-typedef unsigned char byte;
+typedef uint8_t byte;
 
 struct byte_stream {
 	void(*next)(struct byte_stream *self, byte v);
