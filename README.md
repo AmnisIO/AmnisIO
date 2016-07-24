@@ -46,7 +46,7 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 * The only possible operator is MAP
 
 ###### Drivers
-* Arduino UNO driver is working
+* Arduino UNO driver is working, with digital inputs and outputs (analog inputs to be added shortly)
 * Other drivers need to be added
 
 ### JavaScript / TypeScript
@@ -55,7 +55,8 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 * It supports 26 operators
 
 ###### Drivers
-* Arduino UNO driver is to be added
+* Arduino UNO driver has been written, with digital inputs and outputs (analog inputs to be added shortly)
+* Other drivers need to be added
 
 ### Transpiler
 * TypeScript Compiler API is to be used
