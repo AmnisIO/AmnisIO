@@ -10,8 +10,10 @@ Towards this, we will be building a stream library in C, and we will using an ex
 
 We hope to enable you to write, in TypeScript, a blinking LEDs program:
 ```js
+// use riot
+import run from 'reactive-iot';
 // use arduino-uno driver
-import { run, Sources, Sinks, HIGH, LOW } from './drivers/arduino-uno';
+import { Sources, Sinks, HIGH, LOW } from './drivers/arduino-uno';
 
 // toggles a LOW/HIGH value
 function toggle(value: number): number {
