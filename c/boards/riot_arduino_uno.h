@@ -73,7 +73,7 @@ typedef struct riot_arduino_uno_sources_t {
   // stream_of_uint16_t *LED;
 } riot_arduino_uno_sources;
 
-riot_arduino_uno_sinks* *riot_arduino_uno_main(riot_arduino_uno_sources* sources);
+typedef riot_arduino_uno_sinks* (*riot_arduino_uno_main)(riot_arduino_uno_sources* sources);
 
 riot_arduino_uno_sinks* riot_arduino_uno_sinks_create();
 riot_arduino_uno_sources* riot_arduino_uno_sources_create();
