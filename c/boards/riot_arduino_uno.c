@@ -1,4 +1,7 @@
 #include "riot_arduino_uno.h"
+#include "utils.h"
+#include "Arduino.h"
+#include<stdbool.h>
 
 riot_arduino_uno_sinks* riot_arduino_uno_sinks_create() {
   riot_arduino_uno_sinks *sinks = xmalloc(sizeof(riot_arduino_uno_sinks));
@@ -38,8 +41,28 @@ riot_arduino_uno_sources* riot_arduino_uno_sources_create() {
 
   (PWM+ indicates the additional PWM pins on the ATmega168.)
 */
-
-// Pins are already declared by Arduino.h included
+static const uint8_t D0 = 0;
+static const uint8_t D1 = 1;
+static const uint8_t D2 = 2;
+static const uint8_t D3 = 3;
+static const uint8_t D4 = 4;
+static const uint8_t D5 = 5;
+static const uint8_t D6 = 6;
+static const uint8_t D7 = 7;
+static const uint8_t D8 = 8;
+static const uint8_t D9 = 9;
+static const uint8_t D10 = 10;
+static const uint8_t D11 = 11;
+static const uint8_t D12 = 12;
+static const uint8_t D13 = 13;
+static const uint8_t A0 = 14;
+static const uint8_t A1 = 15;
+static const uint8_t A2 = 16;
+static const uint8_t A3 = 17;
+static const uint8_t A4 = 18;
+static const uint8_t A5 = 19;
+static const uint8_t A6 = 20;
+static const uint8_t A7 = 21;
 
 byte riot_arduino_uno_write_to_D0(byte value) {
   pinMode(D0, OUTPUT);
