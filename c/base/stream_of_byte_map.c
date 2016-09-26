@@ -63,7 +63,7 @@ mapped_stream_of_byte_with_index* mapped_stream_of_byte_with_index_create(map_by
 	return stream;
 }
 
-stream_of_byte* stream_of_byte_map(stream_of_byte *stream, map_byte_to_byte_with_index mapper) {
+stream_of_byte* stream_of_byte_map_with_index(stream_of_byte *stream, map_byte_to_byte_with_index mapper) {
 	mapped_stream_of_byte_with_index* mapped_stream = mapped_stream_of_byte_with_index_create(mapper);
 	stream_of_byte* mapped_listener = (stream_of_byte*)mapped_stream;
 	return (stream_of_byte*)stream_add_listener(stream, mapped_listener);
