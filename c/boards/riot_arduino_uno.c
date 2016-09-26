@@ -52,6 +52,7 @@ static const uint8_t D10 = 10;
 static const uint8_t D11 = 11;
 static const uint8_t D12 = 12;
 static const uint8_t D13 = 13;
+// Analog pins A0 to A5/A7 are already declared in Arduino.h
 
 byte riot_arduino_uno_write_to_D0(byte value) {
   pinMode(D0, OUTPUT);
