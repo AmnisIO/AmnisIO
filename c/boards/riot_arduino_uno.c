@@ -1,7 +1,4 @@
 #include "riot_arduino_uno.h"
-#include "utils.h"
-#include "Arduino.h"
-#include<stdbool.h>
 
 riot_arduino_uno_sinks* riot_arduino_uno_sinks_create() {
   riot_arduino_uno_sinks *sinks = xmalloc(sizeof(riot_arduino_uno_sinks));
@@ -55,14 +52,6 @@ static const uint8_t D10 = 10;
 static const uint8_t D11 = 11;
 static const uint8_t D12 = 12;
 static const uint8_t D13 = 13;
-static const uint8_t A0 = 14;
-static const uint8_t A1 = 15;
-static const uint8_t A2 = 16;
-static const uint8_t A3 = 17;
-static const uint8_t A4 = 18;
-static const uint8_t A5 = 19;
-static const uint8_t A6 = 20;
-static const uint8_t A7 = 21;
 
 byte riot_arduino_uno_write_to_D0(byte value) {
   pinMode(D0, OUTPUT);
@@ -135,8 +124,8 @@ byte riot_arduino_uno_write_to_D13(byte value) {
   return 0;
 }
 byte riot_arduino_uno_write_to_LED(byte value) {
-  pinMode(LED, OUTPUT);
-  digitalWrite(LED, value);
+  pinMode(D13, OUTPUT);
+  digitalWrite(D13, value);
   return 0;
 }
 byte riot_arduino_uno_write_to_A0(byte value) {
