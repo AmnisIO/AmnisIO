@@ -11,6 +11,10 @@
 #define RIOT_ARDUINO_UNO_H
 
 #include "stream_of_byte.h"
+#include "utils.h"
+#include "Arduino.h"
+#include<stdbool.h>
+#include "stream_of_byte_map.h"
 
 /**
   The outputs to the board. The outputs are written internally, we just
