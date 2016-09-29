@@ -20,12 +20,16 @@ function toggle(value: number): number {
   return number == HIGH ? LOW : HIGH;
 }
 
-// takes Sources and returns Sinks
+// Your IoT program takes Sources and returns Sinks
+// Sources are streams of inputs from the board
+// Sinks are streams of outputs to the board
 function main(arduino: Sources): Sinks {
-  const in12$ = arduino.D12$;
-  const in13$ = arduino.D13$;
+  // $ is read as 'stream', so the following line declares 'in-stream'
+  const in12$ = arduino.D12$; // The stream of inputs from the D12 pin
+  const in13$ = arduino.D13$; // The stream of inputs from the D13 pin
   const out12$ = in12$.map(toggle);
   const out13$ = in13$.map(toggle);
+  // Push outputs to the D12 and D13 pins as a stream
   return {
     D12$: out12$,
     D13$: out13$
