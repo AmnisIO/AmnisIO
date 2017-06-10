@@ -16,10 +16,6 @@
 #include<stdbool.h>
 #include "stream_of_byte_map.h"
 
-/**
-  The outputs to the board. The outputs are written internally, we just
-  have to use these streams to write.
-*/
 typedef struct riot_arduino_uno_sinks_t {
   stream_of_byte *D0;
   stream_of_byte *D1;
@@ -44,10 +40,6 @@ typedef struct riot_arduino_uno_sinks_t {
   stream_of_byte *A5;
 } riot_arduino_uno_sinks;
 
-/**
-  The inputs that we can read from the arduino uno. Reading of
-  the inputs is written internally, we just have to use these streams.
-*/
 typedef struct riot_arduino_uno_sources_t {
   stream_of_byte *D0;
   stream_of_byte *D1;
@@ -64,17 +56,6 @@ typedef struct riot_arduino_uno_sources_t {
   stream_of_byte *D12;
   stream_of_byte *D13;
   stream_of_byte *LED;
-  /**
-    The following are diabled, because stream_of_unit16_t is not
-    available in the base stream library yet. Hence we are not able
-    to use the 10-bit resolution analog inputs as of now.
-  */
-  // stream_of_uint16_t *A0;
-  // stream_of_uint16_t *A1;
-  // stream_of_uint16_t *A2;
-  // stream_of_uint16_t *A3;
-  // stream_of_uint16_t *A4;
-  // stream_of_uint16_t *A5;
 } riot_arduino_uno_sources;
 
 typedef riot_arduino_uno_sinks* (*riot_arduino_uno_main)(riot_arduino_uno_sources* sources);
