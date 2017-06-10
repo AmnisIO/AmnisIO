@@ -2,6 +2,7 @@
 #define INCLUDE_VARRAY_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct varray_t {
 	void **memory;
