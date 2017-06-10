@@ -45,21 +45,6 @@ stream_of_byte* riot_arduino_uno_write_listener_create(uint8_t pin) {
 
 riot_arduino_uno_sinks* riot_arduino_uno_sinks_create() {
   riot_arduino_uno_sinks *sinks = xmalloc(sizeof(riot_arduino_uno_sinks));
-  sinks->D0 = riot_arduino_uno_write_listener_create(PIN_D0);
-  sinks->D1 = riot_arduino_uno_write_listener_create(PIN_D1);
-  sinks->D2 = riot_arduino_uno_write_listener_create(PIN_D2);
-  sinks->D3 = riot_arduino_uno_write_listener_create(PIN_D3);
-  sinks->D4 = riot_arduino_uno_write_listener_create(PIN_D4);
-  sinks->D5 = riot_arduino_uno_write_listener_create(PIN_D5);
-  sinks->D6 = riot_arduino_uno_write_listener_create(PIN_D6);
-  sinks->D7 = riot_arduino_uno_write_listener_create(PIN_D7);
-  sinks->D8 = riot_arduino_uno_write_listener_create(PIN_D8);
-  sinks->D9 = riot_arduino_uno_write_listener_create(PIN_D9);
-  sinks->D10 = riot_arduino_uno_write_listener_create(PIN_D10);
-  sinks->D11 = riot_arduino_uno_write_listener_create(PIN_D11);
-  sinks->D12 = riot_arduino_uno_write_listener_create(PIN_D12);
-  sinks->D13 = riot_arduino_uno_write_listener_create(PIN_D13);
-  sinks->LED = sinks->D13;
   return sinks;
 }
 
@@ -146,12 +131,31 @@ bool riot_arduino_uno_is_sinks_empty(riot_arduino_uno_sinks *sinks) {
   return true;
 }
 
+void riot_arduino_uno_add_write_listeners(riot_arduino_uno_sinks* sinks) {
+  if(sinks->D0 != NULL) stream_add_listener(sinks->D0, riot_arduino_uno_write_listener_create(PIN_D0));
+  if(sinks->D1 != NULL) stream_add_listener(sinks->D1, riot_arduino_uno_write_listener_create(PIN_D1));
+  if(sinks->D2 != NULL) stream_add_listener(sinks->D2, riot_arduino_uno_write_listener_create(PIN_D2));
+  if(sinks->D3 != NULL) stream_add_listener(sinks->D3, riot_arduino_uno_write_listener_create(PIN_D3));
+  if(sinks->D4 != NULL) stream_add_listener(sinks->D4, riot_arduino_uno_write_listener_create(PIN_D4));
+  if(sinks->D5 != NULL) stream_add_listener(sinks->D5, riot_arduino_uno_write_listener_create(PIN_D5));
+  if(sinks->D6 != NULL) stream_add_listener(sinks->D6, riot_arduino_uno_write_listener_create(PIN_D6));
+  if(sinks->D7 != NULL) stream_add_listener(sinks->D7, riot_arduino_uno_write_listener_create(PIN_D7));
+  if(sinks->D8 != NULL) stream_add_listener(sinks->D8, riot_arduino_uno_write_listener_create(PIN_D8));
+  if(sinks->D9 != NULL) stream_add_listener(sinks->D9, riot_arduino_uno_write_listener_create(PIN_D9));
+  if(sinks->D10 != NULL) stream_add_listener(sinks->D10, riot_arduino_uno_write_listener_create(PIN_D10));
+  if(sinks->D11 != NULL) stream_add_listener(sinks->D11, riot_arduino_uno_write_listener_create(PIN_D11));
+  if(sinks->D12 != NULL) stream_add_listener(sinks->D12, riot_arduino_uno_write_listener_create(PIN_D12));
+  if(sinks->D13 != NULL) stream_add_listener(sinks->D13, riot_arduino_uno_write_listener_create(PIN_D13));
+  if(sinks->LED != NULL) stream_add_listener(sinks->LED, riot_arduino_uno_write_listener_create(PIN_D13));
+}
+
 int riot_arduino_uno_run(riot_arduino_uno_main main) {
   if(main == NULL) return -1;
   riot_arduino_uno_sources *sources = riot_arduino_uno_sources_create();
   if(sources == NULL) return -2;
   riot_arduino_uno_sinks *sinks = main(sources);
   if(sinks == NULL) return -3;
+  riot_arduino_uno_add_write_listeners(sinks);
   while (true) {
     riot_arduino_uno_read_inputs(sources);
     if(riot_arduino_uno_is_sinks_empty(sinks))
