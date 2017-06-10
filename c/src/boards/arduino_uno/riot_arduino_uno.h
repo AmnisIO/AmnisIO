@@ -13,7 +13,6 @@
 #include "stream_of_byte.h"
 #include "utils.h"
 #include "Arduino.h"
-#include<stdbool.h>
 #include "stream_of_byte_map.h"
 
 typedef struct riot_arduino_uno_sinks_t {
