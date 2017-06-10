@@ -35,13 +35,13 @@ typedef struct riot_arduino_uno_sinks_t {
   stream_of_byte *D11;
   stream_of_byte *D12;
   stream_of_byte *D13;
+  stream_of_byte *LED;
   stream_of_byte *A0;
   stream_of_byte *A1;
   stream_of_byte *A2;
   stream_of_byte *A3;
   stream_of_byte *A4;
   stream_of_byte *A5;
-  stream_of_byte *LED;
 } riot_arduino_uno_sinks;
 
 /**
@@ -63,6 +63,7 @@ typedef struct riot_arduino_uno_sources_t {
   stream_of_byte *D11;
   stream_of_byte *D12;
   stream_of_byte *D13;
+  stream_of_byte *LED;
   /**
     The following are diabled, because stream_of_unit16_t is not
     available in the base stream library yet. Hence we are not able
@@ -74,7 +75,6 @@ typedef struct riot_arduino_uno_sources_t {
   // stream_of_uint16_t *A3;
   // stream_of_uint16_t *A4;
   // stream_of_uint16_t *A5;
-  // stream_of_uint16_t *LED;
 } riot_arduino_uno_sources;
 
 typedef riot_arduino_uno_sinks* (*riot_arduino_uno_main)(riot_arduino_uno_sources* sources);
