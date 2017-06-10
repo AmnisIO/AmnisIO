@@ -1,4 +1,4 @@
-#include "varray.h";
+#include "varray.h"
 
 void varray_init(varray **array) {
 	*array = (varray*)malloc(sizeof(varray));
