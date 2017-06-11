@@ -13,7 +13,7 @@ riot_arduino_uno_sinks* blink(riot_arduino_uno_sources* sources) {
 }
 
 void setup() {
-  riot_arduino_uno_run(blink);
+  int result = riot_arduino_uno_run(blink);
 }
 
 void loop() {
