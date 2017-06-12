@@ -330,4 +330,4 @@ jspm_packages
 # Visual Studio Code 
 *.browse*
 
-transpiler/src/index.js
+transpiler/src/**.js
