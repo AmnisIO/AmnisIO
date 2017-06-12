@@ -5,7 +5,15 @@
   "main": "index.js",
   "author": "Sudarsan Balaji<Sudarsan.Balaji@outlook.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "tsc src/index.ts",
+    "build": "tsc src/index.ts",
+    "test": "npm run build && node src/index.js ../ts/tests/boards/arduino-uno/blink.ts"
+  },
   "devDependencies": {
+    "@types/node": "^7.0.29",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
     "typescript": "^2.3.4"
   }
 }
