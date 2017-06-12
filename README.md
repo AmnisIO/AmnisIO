@@ -10,34 +10,29 @@ Towards this, we will be building a stream library in C, and we will using an ex
 
 We hope to enable you to write, in TypeScript, a blinking LEDs program:
 ```js
-// use riot
-import run from '@riot/run';
-// use arduino-uno
-import { Sources, Sinks, HIGH, LOW } from '@riot/arduino-uno';
+// Use reactive-iot/arduino-uno
+import { Sources, Sinks, HIGH, LOW, run, byte, createSinks } from '@reactive-iot/arduino-uno';
 
 // toggles a LOW/HIGH value
-function toggle(value: number): number {
-  return number == HIGH ? LOW : HIGH;
+function toggle(value: byte): byte {
+  return value == HIGH ? LOW : HIGH;
 }
 
 // Your IoT program takes Sources and returns Sinks
 // Sources are streams of inputs from the board
 // Sinks are streams of outputs to the board
-function main(arduino: Sources): Sinks {
+function blink(arduino: Sources): Sinks {
   // $ is read as 'stream', so the following line declares 'in-stream'
-  const in12$ = arduino.D12$; // The stream of inputs from the D12 pin
-  const in13$ = arduino.D13$; // The stream of inputs from the D13 pin
-  const out12$ = in12$.map(toggle);
-  const out13$ = in13$.map(toggle);
-  // Push outputs to the D12 and D13 pins as a stream
+  const led_in$ = arduino.LED$; // The stream of inputs from the LED pin
+  const led_out$ = led_in$.map(toggle);
+  // Push outputs to the LED pin as a stream
   return {
-    D12$: out12$,
-    D13$: out13$
+    LED$: led_out$
   };
 }
 
-// runs the main function on the arduino-uno
-run(main);
+// runs the blink application on the arduino-uno
+run(blink);
 ```
 and be able to run the program in your Arduino/Genuino UNO, for example. We will transpile this into C code that is compatible with the board that you choose to write your IoT code on, and the board will run the code natively.
 
