@@ -57,9 +57,7 @@ function compile(sourceFiles: string[], moduleSearchLocations: string[]): void {
     const options: ts.CompilerOptions = { module: ts.ModuleKind.AMD, target: ts.ScriptTarget.ES5, noLib: true, allowJs: true };
     const host = createCompilerHost(options, moduleSearchLocations);
     const program = ts.createProgram(sourceFiles, options, host);
-    console.log('Compiling...');
-    const initialSourceFile = program.getSourceFiles()[0];
-    const actualSourceFile = program.getSourceFiles()[1];
+    const actualSourceFile = program.getSourceFiles().filter(file => file.fileName === sourceFiles[0]).shift();
     emitSourceFile(actualSourceFile);
 }
 
