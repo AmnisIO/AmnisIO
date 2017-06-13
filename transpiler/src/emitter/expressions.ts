@@ -1,15 +1,22 @@
 import { ExpressionStatement, SyntaxKind, CallExpression, Identifier } from 'typescript';
 import { Context } from '../contexts';
-import { EmitResult } from './';
+import { EmitResult, emit } from './';
 
-export const emitExpressionStatement = (node: ExpressionStatement, context: Context): EmitResult => {
-  switch (node.expression.kind) {
-    case SyntaxKind.CallExpression: return emitCallExpressionStatement(<any>node.expression, context);
-    default: throw new Error(`expression kind not supported ${node.expression.kind}`);
-  }
+export const emitExpressionStatement = ({ expression }: ExpressionStatement, context: Context): EmitResult =>
+  emit(expression, context);
+
+export const emitCallExpressionStatement = (node: CallExpression, context: Context): EmitResult => ({
+  context,
+  emitted_string: getCallExpressionEmit(node, context)
+});
+
+const getCallExpressionEmit = (node: CallExpression, context: Context): string => {
+  const call_expression_name = emit(node.expression, context).emitted_string;
+  const result = `${call_expression_name}(${node.arguments.map(a => emit(a, context).emitted_string).join(', ')});`;
+  return wrapRunCall(call_expression_name, result, context);
 }
 
-const emitCallExpressionStatement = (node: CallExpression, context: Context): EmitResult => ({
-  context,
-  emitted_string: 'call expression ' + (node.expression as Identifier).text + ' with arguments ' + node.arguments.map(a => (a as Identifier).text).join(', ')
-});
+const wrapRunCall = (call_expression_name: string, result: string, context: Context): string => {
+  if (call_expression_name.slice(0, 5) !== 'riot_' || call_expression_name.slice(-4) !== '_run') return result;
+  return context.run_wrapper.replace(':::', result);
+}
