@@ -2,14 +2,21 @@ import { Node, SyntaxKind, SourceFile } from 'typescript';
 import { emitImportDeclaration } from './imports';
 import { emitFunctionLikeDeclaration } from './functions';
 import { emitExpressionStatement } from './expressions';
+import { emitSourceFile } from './source';
+import { Context } from '../contexts';
 
-export const emit = (node: Node): string => {
+export interface EmitResult {
+  context: Context;
+  emitted_string: string;
+}
+
+export const emit = (node: Node, context: Context): EmitResult => {
   switch (node.kind) {
-    case SyntaxKind.SourceFile: return (<SourceFile>node).statements.map(node => emit(node)).join('\n');
-    case SyntaxKind.ImportDeclaration: return emitImportDeclaration(<any>node);
-    case SyntaxKind.FunctionDeclaration: return emitFunctionLikeDeclaration(<any>node);
-    case SyntaxKind.ExpressionStatement: return emitExpressionStatement(<any>node);
-    case SyntaxKind.EndOfFileToken: return 'end';
+    case SyntaxKind.SourceFile: return emitSourceFile(<any>node, context);
+    case SyntaxKind.ImportDeclaration: return emitImportDeclaration(<any>node, context);
+    case SyntaxKind.FunctionDeclaration: return emitFunctionLikeDeclaration(<any>node, context);
+    case SyntaxKind.ExpressionStatement: return emitExpressionStatement(<any>node, context);
+    case SyntaxKind.EndOfFileToken: return { context, emitted_string: 'end' };
     default: throw new Error(`unknown syntax kind ${SyntaxKind[node.kind]}`);
   }
 };
