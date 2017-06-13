@@ -211,5 +211,7 @@ int riot_arduino_uno_run(riot_arduino_uno_main main)
     riot_arduino_uno_read_inputs(sources);
     delay(100);
   } while (riot_arduino_uno_is_sinks_empty(sinks) == 0);
+  free(sources);
+  free(sinks);
   return 0;
 }
