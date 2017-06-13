@@ -10,8 +10,8 @@ const emitFunctionDeclaration = (node: FunctionLikeDeclaration, context: Context
       .map(p => ({ name: emit(p.name, context).emitted_string, type: emit(p.type, context).emitted_string}))
       .map(({ name, type }) => `${type} ${name}`)
       .join(', ');
-  const body = '';
-  const declaration = `${return_type} ${function_name}(${parameters}) {\n${body}\n}`;
+  const body = emit(node.body, context).emitted_string;
+  const declaration = `${return_type} ${function_name}(${parameters}) ${body}`;
   return declaration;
 };
 
