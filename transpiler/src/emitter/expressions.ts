@@ -5,7 +5,7 @@ import { EmitResult, emit, emitString } from './';
 export const emitExpressionStatement = ({ expression }: ExpressionStatement, context: Context): EmitResult =>
   emit(expression, context);
 
-export const emitCallExpressionStatement = (node: CallExpression, context: Context): EmitResult => ({
+export const emitCallExpression = (node: CallExpression, context: Context): EmitResult => ({
   context,
   emitted_string: getCallExpressionEmit(node, context)
 });
