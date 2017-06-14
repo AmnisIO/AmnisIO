@@ -1,7 +1,7 @@
-import { Node, SyntaxKind, SourceFile, TypeReferenceNode, Identifier, Block, ExpressionStatement } from 'typescript';
+import { Node, SyntaxKind, SourceFile, TypeReferenceNode, Identifier, Block, ExpressionStatement, BinaryExpression, PropertyAccessExpression } from 'typescript';
 import { emitImportDeclaration } from './imports';
 import { emitFunctionLikeDeclaration, emitVariableDeclaration } from './declarations';
-import { emitCallExpression, emitConditionalExpression, emitBinaryExpression } from './expressions';
+import { emitCallExpression, emitConditionalExpression, emitBinaryExpression, emitPropertyAccessExpression } from './expressions';
 import { emitColonToken, emitQuestionToken, emitEqualsEqualsToken, emitFirstAssignmentToken } from './tokens';
 import { emitIdentifier, emitType } from './identifiers';
 import { emitBlock } from './blocks';
@@ -65,7 +65,9 @@ export const emit = (node: Node, context: Context): EmitResult => {
     case SyntaxKind.ConditionalExpression:
       return emitConditionalExpression(<any>node, context);
     case SyntaxKind.BinaryExpression:
-      return emitBinaryExpression(<any>node, context);
+      return emitBinaryExpression(<BinaryExpression>node, context);
+    case SyntaxKind.PropertyAccessExpression:
+      return emitPropertyAccessExpression(<PropertyAccessExpression>node, context);
 
     // Clauses
 

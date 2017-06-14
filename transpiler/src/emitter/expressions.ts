@@ -1,4 +1,4 @@
-import { SyntaxKind, CallExpression, Identifier, ConditionalExpression, BinaryExpression } from 'typescript';
+import { SyntaxKind, CallExpression, Identifier, ConditionalExpression, BinaryExpression, PropertyAccessExpression } from 'typescript';
 import { Context } from '../contexts';
 import { EmitResult, emit, emitString } from './';
 
@@ -15,4 +15,9 @@ export const emitConditionalExpression = ({ condition, questionToken, whenTrue, 
 export const emitBinaryExpression = ({ left, right, operatorToken }: BinaryExpression, context: Context): EmitResult => ({
   context,
   emitted_string: `${emitString(left, context)} ${emitString(operatorToken, context)} ${emitString(right, context)}`
+});
+
+export const emitPropertyAccessExpression = ({ name, expression }: PropertyAccessExpression, context: Context): EmitResult => ({
+  context,
+  emitted_string: `${emitString(expression, context)}->${emitString(name, context)}`
 });
