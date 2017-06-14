@@ -1,12 +1,12 @@
 import { Node, SyntaxKind, SourceFile } from 'typescript';
 import { emitImportDeclaration } from './imports';
-import { emitFunctionLikeDeclaration } from './functions';
+import { emitFunctionLikeDeclaration } from './declarations';
 import { emitExpressionStatement, emitCallExpression, emitConditionalExpression, emitBinaryExpression } from './expressions';
 import { emitColonToken, emitQuestionToken, emitEqualsEqualsToken } from './tokens';
 import { emitIdentifier, emitType } from './identifiers';
 import { emitBlock } from './blocks';
 import { emitSourceFile } from './source';
-import { emitReturnStatement } from './statements';
+import { emitReturnStatement, emitVariableStatement } from './statements';
 import { Context } from '../contexts';
 
 export interface EmitResult {
@@ -48,6 +48,8 @@ export const emit = (node: Node, context: Context): EmitResult => {
       return emitExpressionStatement(<any>node, context);
     case SyntaxKind.ReturnStatement:
       return emitReturnStatement(<any>node, context);
+    case SyntaxKind.VariableStatement:
+      return emitVariableStatement(<any>node, context);
 
     // Declarations
     case SyntaxKind.ImportDeclaration:
