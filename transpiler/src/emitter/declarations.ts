@@ -3,14 +3,14 @@ import { Context } from '../contexts';
 import { EmitResult, emit, emitString } from './';
 
 const emitFunctionDeclaration = (node: FunctionLikeDeclaration, context: Context): string => {
-  const return_type = emit(node.type, context).emitted_string;
-  const function_name = emit(node.name, context).emitted_string;
+  const return_type = emitString(node.type, context);
+  const function_name = emitString(node.name, context);
   const parameters =
     node.parameters
-      .map(p => ({ name: emit(p.name, context).emitted_string, type: emit(p.type, context).emitted_string}))
+      .map(p => ({ name: emitString(p.name, context), type: emitString(p.type, context)}))
       .map(({ name, type }) => `${type} ${name}`)
       .join(', ');
-  const body = emit(node.body, context).emitted_string;
+  const body = emitString(node.body, context);
   const declaration = `${return_type} ${function_name}(${parameters}) ${body}`;
   return declaration;
 };
