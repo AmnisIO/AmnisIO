@@ -1,6 +1,6 @@
-import { ReturnStatement, VariableStatement } from 'typescript';
+import { ReturnStatement, VariableStatement, ExpressionStatement } from 'typescript';
 import { Context } from '../contexts';
-import { EmitResult, emit } from './';
+import { EmitResult, emit, emitString } from './';
 
 export const emitReturnStatement = ({ expression }: ReturnStatement, context: Context): EmitResult => {
   const emit_result = emit(expression, context);
@@ -10,16 +10,17 @@ export const emitReturnStatement = ({ expression }: ReturnStatement, context: Co
   };
 };
 
-export const emitVariableStatement = ({ declarationList: { declarations } }: VariableStatement, context: Context): EmitResult => {
-  const emit_result =
-    declarations
-      .reduce<EmitResult>(({ context, emitted_string }, node) => {
-        const result = emit(node, context);
-        result.emitted_string = emitted_string + ';\n  ' + result.emitted_string;
-        return result;
-      }, { context, emitted_string: '' });
-  return {
-    ...emit_result,
-    emitted_string: `${emit_result.emitted_string};`
-  };
-};
+export const emitVariableStatement = ({ declarationList: { declarations } }: VariableStatement, context: Context): EmitResult => ({
+  context,
+  emitted_string: declarations.map(node => emitString(node, context)).join(';\n') + ';'
+});
+
+export const emitExpressionStatement = ({ expression }: ExpressionStatement, context: Context): EmitResult => ({
+  context,
+  emitted_string: wrapRunCall(`${emitString(expression, context)};`, context)
+});
+
+const wrapRunCall = (result: string, { run, run_wrapper }: Context): string => 
+  result.slice(0, run.length) !== run
+    ? result
+    : run_wrapper.replace(':::', result);
