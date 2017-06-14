@@ -2,6 +2,8 @@ import { context as unoContext } from './arduino-uno';
 
 export interface Context {
   [x: string]: string;
+  run_wrapper: string;
+  run: string;
 }
 
 interface IndexedContexts {
