@@ -5,6 +5,7 @@ import { EmitResult, emit, emitString } from './';
 const emitFunctionDeclaration = (node: FunctionLikeDeclaration, context: Context): string => {
   const return_type = emitString(node.type, context);
   const function_name = emitString(node.name, context);
+  // TODO: Move to parameter node emit
   const parameters =
     node.parameters
       .map(p => ({ name: emitString(p.name, context), type: emitString(p.type, context)}))
