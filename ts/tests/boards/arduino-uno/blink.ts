@@ -5,7 +5,7 @@ function toggle(value: byte): byte {
 }
 
 function blink(arduino: Sources): Sinks {
-  const sinks = createSinks();
+  const sinks: Sinks = createSinks();
   sinks.LED$ = arduino.LED$.map(toggle);
   return sinks;
 }
