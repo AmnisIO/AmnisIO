@@ -11,7 +11,7 @@ declare var process: any;
       process.exit();
     var fileNames = process.argv.slice(2);
     const sourceFile = getAST(fileNames);
-    const result = emit(sourceFile, {});
+    const result = emit(sourceFile, { run: '', run_wrapper: '' });
     console.log(result.emitted_string);
     process.exit();
   }
