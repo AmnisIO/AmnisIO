@@ -1,12 +1,12 @@
-import { Node, SyntaxKind, SourceFile } from 'typescript';
+import { Node, SyntaxKind, SourceFile, TypeReferenceNode, Identifier, Block, ExpressionStatement } from 'typescript';
 import { emitImportDeclaration } from './imports';
-import { emitFunctionLikeDeclaration } from './declarations';
-import { emitExpressionStatement, emitCallExpression, emitConditionalExpression, emitBinaryExpression } from './expressions';
+import { emitFunctionLikeDeclaration, emitVariableDeclaration } from './declarations';
+import { emitCallExpression, emitConditionalExpression, emitBinaryExpression } from './expressions';
 import { emitColonToken, emitQuestionToken, emitEqualsEqualsToken } from './tokens';
 import { emitIdentifier, emitType } from './identifiers';
 import { emitBlock } from './blocks';
 import { emitSourceFile } from './source';
-import { emitReturnStatement, emitVariableStatement } from './statements';
+import { emitReturnStatement, emitVariableStatement, emitExpressionStatement } from './statements';
 import { Context } from '../contexts';
 
 export interface EmitResult {
@@ -25,11 +25,11 @@ export const emit = (node: Node, context: Context): EmitResult => {
   switch (node.kind) {
     // Source
     case SyntaxKind.SourceFile:
-      return emitSourceFile(<any>node, context);
-    
+      return emitSourceFile(<SourceFile>node, context);
+
     // Identifiers
     case SyntaxKind.Identifier:
-      return emitIdentifier(<any>node, context);
+      return emitIdentifier(<Identifier>node, context);
 
     // Names
 
@@ -39,13 +39,13 @@ export const emit = (node: Node, context: Context): EmitResult => {
 
     // Types
     case SyntaxKind.TypeReference:
-      return emitType(<any>node, context);
-    
+      return emitType(<TypeReferenceNode>node, context);
+
     // Statements
     case SyntaxKind.Block:
-      return emitBlock(<any>node, context);
+      return emitBlock(<Block>node, context);
     case SyntaxKind.ExpressionStatement:
-      return emitExpressionStatement(<any>node, context);
+      return emitExpressionStatement(<ExpressionStatement>node, context);
     case SyntaxKind.ReturnStatement:
       return emitReturnStatement(<any>node, context);
     case SyntaxKind.VariableStatement:
@@ -56,7 +56,9 @@ export const emit = (node: Node, context: Context): EmitResult => {
       return emitImportDeclaration(<any>node, context);
     case SyntaxKind.FunctionDeclaration:
       return emitFunctionLikeDeclaration(<any>node, context);
-    
+    case SyntaxKind.VariableDeclaration:
+      return emitVariableDeclaration(<any>node, context);
+
     // Expressions
     case SyntaxKind.CallExpression:
       return emitCallExpression(<any>node, context);
