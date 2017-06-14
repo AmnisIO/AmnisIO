@@ -16,3 +16,8 @@ export const emitEqualsEqualsToken = (node: Node, context: Context): EmitResult 
   context,
   emitted_string: '=='
 });
+
+export const emitFirstAssignmentToken = (node: Node, context: Context): EmitResult => ({
+  context,
+  emitted_string: '='
+});

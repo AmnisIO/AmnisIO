@@ -2,7 +2,7 @@ import { Node, SyntaxKind, SourceFile, TypeReferenceNode, Identifier, Block, Exp
 import { emitImportDeclaration } from './imports';
 import { emitFunctionLikeDeclaration, emitVariableDeclaration } from './declarations';
 import { emitCallExpression, emitConditionalExpression, emitBinaryExpression } from './expressions';
-import { emitColonToken, emitQuestionToken, emitEqualsEqualsToken } from './tokens';
+import { emitColonToken, emitQuestionToken, emitEqualsEqualsToken, emitFirstAssignmentToken } from './tokens';
 import { emitIdentifier, emitType } from './identifiers';
 import { emitBlock } from './blocks';
 import { emitSourceFile } from './source';
@@ -79,6 +79,8 @@ export const emit = (node: Node, context: Context): EmitResult => {
       return emitQuestionToken(<any>node, context);
     case SyntaxKind.ColonToken:
       return emitColonToken(<any>node, context);
+    case SyntaxKind.FirstAssignment:
+      return emitFirstAssignmentToken(node, context);
     case SyntaxKind.EndOfFileToken:
       return { context, emitted_string: '\n' };
 
