@@ -1,6 +1,6 @@
-import { FunctionLikeDeclaration, Identifier, TypeReferenceNode } from 'typescript';
+import { FunctionLikeDeclaration, Identifier, TypeReferenceNode, VariableDeclaration } from 'typescript';
 import { Context } from '../contexts';
-import { EmitResult, emit } from './';
+import { EmitResult, emit, emitString } from './';
 
 const emitFunctionDeclaration = (node: FunctionLikeDeclaration, context: Context): string => {
   const return_type = emit(node.type, context).emitted_string;
@@ -21,3 +21,10 @@ export const emitFunctionLikeDeclaration = (node: FunctionLikeDeclaration, conte
     emitted_string: emitFunctionDeclaration(node, context)
   };
 }
+
+export const emitVariableDeclaration = ({ type, name, initializer }: VariableDeclaration, context: Context): EmitResult => {
+  return {
+    context,
+    emitted_string: `${emitString(type, context)} ${emitString(name, context)} = ${emitString(initializer, context)}`
+  }
+};
