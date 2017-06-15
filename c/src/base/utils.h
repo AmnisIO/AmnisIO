@@ -4,6 +4,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void* xmalloc(size_t size);
+typedef size_t Size;
+
+void* xmalloc(Size size);
 
 #endif
