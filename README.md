@@ -59,7 +59,8 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 
 ### Transpiler
 * TypeScript Compiler API is to be used
-* Work not yet started
+* We are able to transpile into C
+* We are able to run the transpiled code on the Arduino UNO
 
 ## Contributing
 With such a lofty goal, we will need all the help we can get. However, at the moment, we are in a very nascent stage and it would take us some time to set up some guidelines towards contribution, etc. Please feel free to open up issues on this repo till then.
