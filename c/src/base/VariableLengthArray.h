@@ -1,22 +1,21 @@
-#ifndef INCLUDE_VARIABLE_LENGTH_ARRAY_H
-#define INCLUDE_VARIABLE_LENGTH_ARRAY_H
+#ifndef C_VARIABLELENGTHARRAY_H
+#define C_VARIABLELENGTHARRAY_H
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "utils.h"
 
 typedef struct VariableLengthArray {
 	void **memory;
 	Size allocated;
 	Size used;
 	int index;
-  void (*push)(VariableLengthArray *array, void *data);
-  int (*length)(VariableLengthArray *array);
-  void (*clear)(VariableLengthArray *array);
-  void (*free)(VariableLengthArray *array);
-  void* (*get)(VariableLengthArray *array, int index);
-  void (*insert)(VariableLengthArray *array, int index, void *data);
+  void (*push)(struct VariableLengthArray *array, void *data);
+  int (*length)(struct VariableLengthArray *array);
+  void (*clear)(struct VariableLengthArray *array);
+  void (*free)(struct VariableLengthArray *array);
+  void* (*get)(struct VariableLengthArray *array, int index);
+  void (*insert)(struct VariableLengthArray *array, int index, void *data);
 } VariableLengthArray;
 
 void variable_length_array_initialize(VariableLengthArray **array);
 
-#endif
+#endif // C_VARIABLELENGTHARRAY_H
