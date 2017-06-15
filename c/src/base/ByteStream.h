@@ -12,6 +12,6 @@ typedef struct ByteStream {
   VariableLengthArray *listeners;
 } ByteStream;
 
-ByteStream* byte_stream_create(ByteProducer *producer);
+ByteStream *byte_stream_create (ByteProducer *producer);
 
 #endif
