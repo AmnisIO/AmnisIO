@@ -331,3 +331,6 @@ jspm_packages
 *.browse*
 
 transpiler/src/**.js
+
+c/CMakeLists.txt
+c/cmake-build-debug/
