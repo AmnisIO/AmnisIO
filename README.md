@@ -22,7 +22,7 @@ function toggle(value: byte): byte {
 // Sources are streams of inputs from the board
 // Sinks are streams of outputs to the board
 function blink(arduino: Sources): Sinks {
-  // $ is read as 'stream', so the following line declares 'in-stream'
+  // $ is read as 'stream', so the following line declares 'led_in_stream'
   const led_in$ = arduino.LED$; // The stream of inputs from the LED pin
   const led_out$ = led_in$.map(toggle);
   // Push outputs to the LED pin as a stream
