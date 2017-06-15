@@ -27,11 +27,12 @@ static void _complete (ByteStream *stream) {
   }
 };
 
-ByteStream *byte_stream_create (ByteProducer *producer) {
+ByteStream* byte_stream_create (ByteProducer *producer) {
   ByteStream *stream = xmalloc (sizeof (ByteStream));
   stream->next = _next;
   stream->error = _error;
   stream->complete = _complete;
   variable_length_array_initialize (&(stream->listeners));
+  producer->listeners->push (producer->listeners, stream);
   return stream;
 }
