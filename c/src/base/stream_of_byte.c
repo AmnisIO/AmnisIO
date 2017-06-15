@@ -1,6 +1,6 @@
 #include "stream_of_byte.h"
 
-void stream_of_byte_next(stream_of_byte *stream, byte v) {
+static void _next(stream_of_byte *stream, byte v) {
 	varray *array = stream->listeners;
 	int length = varray_length(array);
 	for (int i = 0; i < length; i++) {
@@ -9,7 +9,7 @@ void stream_of_byte_next(stream_of_byte *stream, byte v) {
 	}
 };
 
-void stream_of_byte_error(stream_of_byte *stream, byte e) {
+static void _error(stream_of_byte *stream, byte e) {
 	varray *array = stream->listeners;
 	int length = varray_length(array);
 	for (int i = 0; i < length; i++) {
@@ -18,7 +18,7 @@ void stream_of_byte_error(stream_of_byte *stream, byte e) {
 	}
 };
 
-void stream_of_byte_complete(stream_of_byte *stream) {
+static void _complete(stream_of_byte *stream) {
 	varray *array = stream->listeners;
 	int length = varray_length(array);
 	for (int i = 0; i < length; i++) {
@@ -34,9 +34,9 @@ stream_of_byte* stream_of_byte_create() {
 
 stream_of_byte* stream_of_byte_init(stream_of_byte *stream) {
 	varray_init(&(stream->listeners));
-	stream->next = stream_of_byte_next;
-	stream->error = stream_of_byte_error;
-	stream->complete = stream_of_byte_complete;
+	stream->next = _next;
+	stream->error = _error;
+	stream->complete = _complete;
 	return stream;
 }
 
