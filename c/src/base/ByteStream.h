@@ -1,8 +1,6 @@
-#ifndef INCLUDE_BYTE_STREAM_H
-#define INCLUDE_BYTE_STREAM_H
+#ifndef C_BYTESTREAM_H
+#define C_BYTESTREAM_H
 
-#include "VariableLengthArray.h"
-#include "utils.h"
 #include "ByteProducer.h"
 
 typedef struct ByteStream {
@@ -14,4 +12,4 @@ typedef struct ByteStream {
 
 ByteStream *byte_stream_create (ByteProducer *producer);
 
-#endif
+#endif // C_BYTESTREAM_H
