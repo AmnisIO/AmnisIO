@@ -1,17 +1,16 @@
-#ifndef INCLUDE_BYTE_PRODUCER_H
-#define INCLUDE_BYTE_PRODUCER_H
+#ifndef C_BYTEPRODUCER_H
+#define C_BYTEPRODUCER_H
 
-#include "VariableLengthArray.h"
-#include "utils.h"
-
-typedef uint8_t Byte;
+#include "ByteListener.h"
 
 typedef struct ByteProducer {
   void (*next) (struct ByteProducer *self, Byte v);
   void (*error) (struct ByteProducer *self, Byte e);
   void (*complete) (struct ByteProducer *self);
   VariableLengthArray *listeners;
-  void (*init) ();
+  void (*init) (struct ByteProducer *self);
 } ByteProducer;
 
-#endif
+ByteProducer *byte_producer_create ();
+
+#endif // C_BYTEPRODUCER_H
