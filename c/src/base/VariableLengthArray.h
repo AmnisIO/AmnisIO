@@ -4,18 +4,18 @@
 #include "utils.h"
 
 typedef struct VariableLengthArray {
-	void **memory;
-	Size allocated;
-	Size used;
-	int index;
-  void (*push)(struct VariableLengthArray *array, void *data);
-  int (*length)(struct VariableLengthArray *array);
-  void (*clear)(struct VariableLengthArray *array);
-  void (*free)(struct VariableLengthArray *array);
-  void* (*get)(struct VariableLengthArray *array, int index);
-  void (*insert)(struct VariableLengthArray *array, int index, void *data);
+  void **memory;
+  Size allocated;
+  Size used;
+  int index;
+  void (*push) (struct VariableLengthArray *array, void *data);
+  int (*length) (struct VariableLengthArray *array);
+  void (*clear) (struct VariableLengthArray *array);
+  void (*free) (struct VariableLengthArray *array);
+  void *(*get) (struct VariableLengthArray *array, int index);
+  void (*insert) (struct VariableLengthArray *array, int index, void *data);
 } VariableLengthArray;
 
-void variable_length_array_initialize(VariableLengthArray **array);
+void variable_length_array_initialize (VariableLengthArray **array);
 
 #endif // C_VARIABLELENGTHARRAY_H
