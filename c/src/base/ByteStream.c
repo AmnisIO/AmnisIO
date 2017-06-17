@@ -97,7 +97,7 @@ typedef struct ByteSubscriptionImplementation {
 } ByteSubscriptionImplementation;
 
 static void _unsubscribe (ByteStream *stream, ByteListener *listener) {
-  stream->remove_listener(stream, listener);
+  stream->remove_listener (stream, listener);
 }
 
 static void _unsubscribe_with_subscription (ByteSubscription *subscription) {
@@ -106,7 +106,7 @@ static void _unsubscribe_with_subscription (ByteSubscription *subscription) {
 }
 
 static ByteSubscription *_subscribe (ByteStream *stream, ByteListener *listener) {
-  stream->add_listener(stream, listener);
+  stream->add_listener (stream, listener);
   ByteSubscriptionImplementation *subscription = xmalloc (sizeof (ByteSubscriptionImplementation));
   subscription->stream = stream;
   subscription->listener = listener;
@@ -146,7 +146,7 @@ static void _never_stop (struct ByteProducer *self) {
 }
 
 static void _complete_immediately (struct ByteProducer *self, struct ByteListener *listener) {
-  listener->complete(listener);
+  listener->complete (listener);
 }
 
 ByteStream *byte_stream_never () {
@@ -155,5 +155,9 @@ ByteStream *byte_stream_never () {
 
 ByteStream *byte_stream_empty () {
   return byte_stream_create (byte_producer_create (_complete_immediately, _never_stop));
+}
+
+ByteStream *byte_stream_from_array (VariableLengthArray *array) {
+  return byte_stream_create (byte_producer_from_array (array));
 }
 

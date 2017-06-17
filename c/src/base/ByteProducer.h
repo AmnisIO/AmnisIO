@@ -15,6 +15,6 @@ typedef void (*byte_producer_start) (struct ByteProducer *self, struct ByteListe
 typedef void (*byte_producer_stop) (struct ByteProducer *self);
 
 ByteProducer *byte_producer_create(byte_producer_start, byte_producer_stop);
-
+void byte_producer_initialize(ByteProducer *producer, byte_producer_start, byte_producer_stop);
 
 #endif // C_BYTEPRODUCER_H

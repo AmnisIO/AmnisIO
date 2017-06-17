@@ -6,6 +6,7 @@
 #include "ByteSubscription.h"
 #include "VariableLengthArray.h"
 #include "Boolean.h"
+#include "ByteProducerFromArray.h"
 
 typedef Byte (*byte_steam_map_function) (Byte value);
 typedef Boolean (*byte_steam_filter_function) (Byte value);
@@ -36,6 +37,6 @@ typedef struct ByteStream {
 ByteStream *byte_stream_create (ByteProducer *producer);
 ByteStream *byte_stream_never ();
 ByteStream *byte_stream_empty ();
-ByteStream *byte_stream_from_array (Byte array[]);
+ByteStream *byte_stream_from_array (VariableLengthArray *array);
 
 #endif // C_BYTESTREAM_H
