@@ -11,7 +11,7 @@ static void _next (ByteListenerInternal *self, Byte value) {
   if (length == 0) return;
   for (int i = 0; i < length; i++) {
     ByteListenerInternal *listener = internal_listeners->get (internal_listeners, i);
-    listener->_next (listener, value);
+    byte_listener_internal_next_get (listener) (listener, value);
   }
 }
 
@@ -24,7 +24,7 @@ static void _error (ByteListenerInternal *self, int error) {
   if (length == 0) return;
   for (int i = 0; i < length; i++) {
     ByteListenerInternal *listener = internal_listeners->get (internal_listeners, i);
-    listener->_error (listener, error);
+    byte_listener_internal_error_get (listener) (listener, error);
   }
   stream->_teardown (stream);
 }
@@ -36,7 +36,7 @@ static void _complete (ByteListenerInternal *self) {
   if (length == 0) return;
   for (int i = 0; i < length; i++) {
     ByteListenerInternal *listener = internal_listeners->get (internal_listeners, i);
-    listener->_complete (listener);
+    byte_listener_internal_complete_get (listener) (listener);
   }
   stream->_teardown (stream);
 }
@@ -116,7 +116,7 @@ static ByteSubscription *_subscribe (ByteStream *stream, ByteListener *listener)
 
 static ByteStream *_create (ByteProducerInternal *producer) {
   ByteStream *stream = xmalloc (sizeof (ByteStream));
-  stream->type = STREAM;
+  stream->type = OBSERVABLE_TYPE_STREAM;
   stream->_producer = producer;
   stream->_next = _next;
   stream->_error = _error;

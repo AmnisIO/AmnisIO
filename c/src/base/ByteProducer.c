@@ -10,7 +10,7 @@ static void _stop (struct ByteProducerInternal *self) {
 };
 
 void byte_producer_initialize (ByteProducer *producer, byte_producer_start start, byte_producer_stop stop) {
-  producer->type = PRODUCER;
+  producer->type = OBSERVABLE_TYPE_PRODUCER;
   producer->start = start;
   producer->stop = stop;
   producer->_start = _start;

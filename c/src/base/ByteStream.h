@@ -7,6 +7,7 @@
 #include "VariableLengthArray.h"
 #include "Boolean.h"
 #include "ByteProducerFromArray.h"
+#include "ByteListernerManager.h"
 
 typedef Byte (*byte_steam_map_function) (Byte value);
 typedef Boolean (*byte_steam_filter_function) (Byte value);
