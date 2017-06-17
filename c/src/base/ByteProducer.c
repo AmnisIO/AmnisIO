@@ -2,7 +2,7 @@
 
 static void _start (struct ByteProducerInternal *self, struct ByteListenerInternal *listener) {
   ByteProducer *producer = (ByteProducer *) self;
-  producer->start (producer, (ByteListener *) listener);
+  producer->start (producer, listener);
 }
 static void _stop (struct ByteProducerInternal *self) {
   ByteProducer *producer = (ByteProducer *) self;

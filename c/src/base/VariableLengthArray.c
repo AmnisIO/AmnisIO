@@ -87,4 +87,22 @@ void variable_length_array_initialize (VariableLengthArray **array) {
   (*array)->find_index = _find_index;
 }
 
+VariableLengthArray *variable_length_array_create () {
+  VariableLengthArray *array = xmalloc (sizeof (VariableLengthArray));
+  array->memory = NULL;
+  array->allocated = 0;
+  array->used = 0;
+  array->index = -1;
+  array->push = _push;
+  array->length = _length;
+  array->clear = _clear;
+  array->free = _free;
+  array->get = _get;
+  array->insert = _insert;
+  array->remove = _remove;
+  array->index_of = _index_of;
+  array->find_index = _find_index;
+  return array;
+}
+
 

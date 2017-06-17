@@ -1,14 +1,15 @@
 #include "ByteProducerFromArray.h"
 
-static void _from_array_start (ByteProducer *self, ByteListener *listener) {
+static void _from_array_start (ByteProducer *self, ByteListenerInternal *listener) {
   ByteProducerFromArray *producer = (ByteProducerFromArray *) self;
   VariableLengthArray *array = producer->array;
   int length = array->length (array);
   for (int i = 0; i < length; i++) {
     // TODO: Check if this is correct
-    listener->next (listener, (Byte) array->get (array, i));
+    Byte *value = array->get (array, i);
+    listener->_next (listener, *value);
   }
-  listener->complete (listener);
+  listener->_complete (listener);
 }
 
 static void _from_array_stop (ByteProducer *self) {

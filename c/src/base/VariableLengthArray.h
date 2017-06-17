@@ -23,5 +23,6 @@ typedef struct VariableLengthArray {
 } VariableLengthArray;
 
 void variable_length_array_initialize (VariableLengthArray **array);
+VariableLengthArray *variable_length_array_create ();
 
 #endif // C_VARIABLELENGTHARRAY_H
