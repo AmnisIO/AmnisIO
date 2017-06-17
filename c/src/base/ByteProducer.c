@@ -9,7 +9,8 @@ static void _stop (struct ByteProducerInternal *self) {
   producer->stop (producer);
 };
 
-void byte_producer_initialize(ByteProducer *producer, byte_producer_start start, byte_producer_stop stop) {
+void byte_producer_initialize (ByteProducer *producer, byte_producer_start start, byte_producer_stop stop) {
+  producer->type = PRODUCER;
   producer->start = start;
   producer->stop = stop;
   producer->_start = _start;

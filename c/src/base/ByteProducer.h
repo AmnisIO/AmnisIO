@@ -5,6 +5,7 @@
 #include "ByteProducerInternal.h"
 
 typedef struct ByteProducer {
+  ByteObservableType type;
   byte_producer_internal_start _start;
   byte_producer_internal_stop _stop;
   void (*start) (struct ByteProducer *self, struct ByteListenerInternal *listener);

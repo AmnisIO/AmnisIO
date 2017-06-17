@@ -6,6 +6,7 @@
 #include "VariableLengthArray.h"
 
 typedef struct ByteProducerFromArray {
+  ByteObservableType type;
   byte_producer_internal_start _start;
   byte_producer_internal_stop _stop;
   byte_producer_start start;

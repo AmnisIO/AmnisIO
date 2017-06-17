@@ -5,9 +5,9 @@
 #include "ByteStream.h"
 
 typedef struct ByteByteOperator {
+  ByteObservableType type;
   ByteProducerInternal *_producer;
   ByteListenerInternal *_listener;
-  int type;
   ByteStream *in;
   ByteStream *out;
   void (*_start) (struct ByteByteOperator *self, ByteStream *out);

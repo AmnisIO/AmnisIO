@@ -16,6 +16,7 @@ static void _complete (struct ByteListenerInternal *self) {
 ByteListener *
 byte_listener_create (byte_listener_next next, byte_listener_error error, byte_listener_complete complete) {
   ByteListener *listener = xmalloc (sizeof (ByteListener));
+  listener->type = LISTENER;
   listener->_next = _next;
   listener->_error = _error;
   listener->_complete = _complete;

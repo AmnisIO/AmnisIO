@@ -116,6 +116,7 @@ static ByteSubscription *_subscribe (ByteStream *stream, ByteListener *listener)
 
 static ByteStream *_create (ByteProducerInternal *producer) {
   ByteStream *stream = xmalloc (sizeof (ByteStream));
+  stream->type = STREAM;
   stream->_producer = producer;
   stream->_next = _next;
   stream->_error = _error;

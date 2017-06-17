@@ -4,6 +4,7 @@
 #include "ByteListenerInternal.h"
 
 typedef struct ByteListener {
+  ByteObservableType type;
   byte_listener_internal_next _next;
   byte_listener_internal_error _error;
   byte_listener_internal_complete _complete;

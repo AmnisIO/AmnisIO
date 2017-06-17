@@ -12,6 +12,7 @@ typedef Byte (*byte_steam_map_function) (Byte value);
 typedef Boolean (*byte_steam_filter_function) (Byte value);
 
 typedef struct ByteStream {
+  ByteObservableType type;
   byte_listener_internal_next _next;
   byte_listener_internal_error _error;
   byte_listener_internal_complete _complete;
