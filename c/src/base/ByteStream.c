@@ -97,7 +97,7 @@ typedef struct ByteSubscriptionImplementation {
 } ByteSubscriptionImplementation;
 
 static void _unsubscribe (ByteStream *stream, ByteListener *listener) {
-
+  stream->remove_listener(stream, listener);
 }
 
 static void _unsubscribe_with_subscription (ByteSubscription *subscription) {
@@ -106,6 +106,7 @@ static void _unsubscribe_with_subscription (ByteSubscription *subscription) {
 }
 
 static ByteSubscription *_subscribe (ByteStream *stream, ByteListener *listener) {
+  stream->add_listener(stream, listener);
   ByteSubscriptionImplementation *subscription = xmalloc (sizeof (ByteSubscriptionImplementation));
   subscription->stream = stream;
   subscription->listener = listener;
