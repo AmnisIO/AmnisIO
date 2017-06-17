@@ -1,7 +1,7 @@
 #ifndef C_BYTESTREAM_H
 #define C_BYTESTREAM_H
 
-#include "ByteProducer.h"
+#include "ByteProducerInternal.h"
 
 typedef struct ByteStream {
   void (*next) (struct ByteStream *self, Byte v);
@@ -10,6 +10,6 @@ typedef struct ByteStream {
   VariableLengthArray *listeners;
 } ByteStream;
 
-ByteStream *byte_stream_create (ByteProducer *producer);
+ByteStream *byte_stream_create (ByteProducerInternal *producer);
 
 #endif // C_BYTESTREAM_H

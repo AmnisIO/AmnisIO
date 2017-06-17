@@ -31,7 +31,7 @@ static void _complete (ByteStream *stream) {
   free (listeners);
 };
 
-ByteStream *byte_stream_create (ByteProducer *producer) {
+ByteStream *byte_stream_create (ByteProducerInternal *producer) {
   ByteStream *stream = xmalloc (sizeof (ByteStream));
   stream->next = _next;
   stream->error = _error;
