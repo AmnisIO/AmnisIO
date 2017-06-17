@@ -4,8 +4,8 @@
 #include "ByteListenerInternal.h"
 
 typedef struct ByteProducerInternal {
-  void (*_start) (struct ByteListenerInternal *listener);
-  void (*_stop) ();
+  void (*_start) (struct ByteProducerInternal *self, struct ByteListenerInternal *listener);
+  void (*_stop) (struct ByteProducerInternal *self);
 } ByteProducerInternal;
 
 #endif // C_BYTEPRODUCERINTERNAL_H

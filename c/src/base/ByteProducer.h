@@ -4,8 +4,8 @@
 #include "ByteListener.h"
 
 typedef struct ByteProducer {
-  void (*_start) (struct ByteListener *listener);
-  void (*_stop) ();
+  void (*_start) (struct ByteProducer *self, struct ByteListener *listener);
+  void (*_stop) (struct ByteProducer *self);
 } ByteProducer;
 
 #endif // C_BYTEPRODUCER_H

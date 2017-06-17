@@ -10,7 +10,7 @@ typedef struct ByteByteOperator {
   ByteListenerInternal *_listener;
   int type;
   ByteStream* in;
-  void (*_start) (ByteStream *out);
+  void (*_start) (struct ByteByteOperator *self, ByteStream *out);
 } ByteByteOperator;
 
 #endif //C_BYTEBYTEOPERATOR_H
