@@ -110,6 +110,7 @@ static ByteSubscription *_subscribe (ByteStream *stream, ByteListener *listener)
   ByteSubscriptionImplementation *subscription = xmalloc (sizeof (ByteSubscriptionImplementation));
   subscription->stream = stream;
   subscription->listener = listener;
+  subscription->unsubscribe = _unsubscribe_with_subscription;
   return (ByteSubscription *) subscription;
 }
 
