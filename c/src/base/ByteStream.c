@@ -132,3 +132,7 @@ static ByteStream *_create (ByteProducerInternal *producer) {
   stream->subscribe = _subscribe;
   return stream;
 }
+
+ByteStream *byte_stream_create (ByteProducer *producer) {
+  return _create ((ByteProducerInternal *) producer);
+}
