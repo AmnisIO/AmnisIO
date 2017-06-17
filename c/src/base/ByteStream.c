@@ -136,3 +136,24 @@ static ByteStream *_create (ByteProducerInternal *producer) {
 ByteStream *byte_stream_create (ByteProducer *producer) {
   return _create ((ByteProducerInternal *) producer);
 }
+
+static void _never_start (struct ByteProducer *self, struct ByteListener *listener) {
+
+}
+
+static void _never_stop (struct ByteProducer *self) {
+
+}
+
+static void _complete_immediately (struct ByteProducer *self, struct ByteListener *listener) {
+  listener->complete(listener);
+}
+
+ByteStream *byte_stream_never () {
+  return byte_stream_create (byte_producer_create (_never_start, _never_stop));
+}
+
+ByteStream *byte_stream_empty () {
+  return byte_stream_create (byte_producer_create (_complete_immediately, _never_stop));
+}
+
