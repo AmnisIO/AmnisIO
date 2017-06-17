@@ -102,7 +102,7 @@ static void _add_listener (ByteStream *stream, ByteListener *listener) {
 
 static void _remove_listener (ByteStream *stream, ByteListener *listener) {
   ByteListenerInternal *internal_listener = xmalloc (sizeof (ByteListenerInternal));
-  internal_listener->_next = listener->_next;
+  internal_listener->_next = listener->next;
   stream->_remove (stream, internal_listener);
 }
 
