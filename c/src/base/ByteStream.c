@@ -81,6 +81,14 @@ static void _remove (ByteStream *stream, ByteListenerInternal *listener) {
   }
 }
 
+static void _add_listener (ByteStream *stream, ByteListener *listener) {
+  stream->_add (stream, (ByteListenerInternal *) listener);
+}
+
+static void _remove_listener (ByteStream *stream, ByteListener *listener) {
+  stream->_remove (stream, (ByteListenerInternal *) listener);
+}
+
 static ByteStream *_create (ByteProducerInternal *producer) {
   ByteStream *stream = xmalloc (sizeof (ByteStream));
   stream->_producer = producer;
@@ -94,5 +102,7 @@ static ByteStream *_create (ByteProducerInternal *producer) {
   variable_length_array_initialize (&(stream->_internal_listeners));
   stream->_stop_id = STOP_ID_NONE;
   stream->_error_code = ERROR_NONE;
+  stream->add_listener = _add_listener;
+  stream->remove_listener = _remove_listener;
   return stream;
 }
