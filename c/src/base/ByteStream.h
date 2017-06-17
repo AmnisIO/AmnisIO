@@ -2,6 +2,7 @@
 #define C_BYTESTREAM_H
 
 #include "ByteProducerInternal.h"
+#include "VariableLengthArray.h"
 
 typedef struct ByteStream {
   void (*next) (struct ByteStream *self, Byte v);
