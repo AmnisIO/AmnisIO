@@ -11,7 +11,7 @@ static void _next (ByteListenerInternal *self, Byte value) {
   if (length == 0) return;
   for (int i = 0; i < length; i++) {
     ByteListenerInternal *listener = internal_listeners->get (internal_listeners, i);
-    listener->next (listener, value);
+    listener->_next (listener, value);
   }
 }
 
@@ -24,7 +24,7 @@ static void _error (ByteListenerInternal *self, int error) {
   if (length == 0) return;
   for (int i = 0; i < length; i++) {
     ByteListenerInternal *listener = internal_listeners->get (internal_listeners, i);
-    listener->error (listener, error);
+    listener->_error (listener, error);
   }
   stream->_teardown (stream);
 }
@@ -36,7 +36,7 @@ static void _complete (ByteListenerInternal *self) {
   if (length == 0) return;
   for (int i = 0; i < length; i++) {
     ByteListenerInternal *listener = internal_listeners->get (internal_listeners, i);
-    listener->complete (listener);
+    listener->_complete (listener);
   }
   stream->_teardown (stream);
 }
