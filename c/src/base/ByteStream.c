@@ -68,25 +68,43 @@ static void _add (ByteStream *stream, ByteListenerInternal *listener) {
   }
 }
 
+static Boolean _if_id_equal (void *data, void *to_find) {
+  ByteListenerInternal *actual = (ByteListenerInternal *) to_find;
+  ByteListenerInternal *current = (ByteListenerInternal *) data;
+  return current->_id == actual->_id;
+}
+
 static void _remove (ByteStream *stream, ByteListenerInternal *listener) {
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
-  int index = internal_listeners->index_of (internal_listeners, listener);
+  int index = internal_listeners->find_index (internal_listeners, listener, _if_id_equal);
   if (index > -1) {
     int length = internal_listeners->remove (internal_listeners, index);
     if (stream->_producer != NULL && length == 0) {
       stream->_error_code = ERROR_NONE;
       // TODO: schedule a stop
       // stream->_stop_id = _set_timeout (stream->_stop_now, 0);
+      stream->_stop_now (stream);
     }
   }
 }
 
+static ByteListenerInternal *_to_internal_listener (ByteListener *listener) {
+  ByteListenerInternal *internal_listener = xmalloc (sizeof (ByteListenerInternal));
+  internal_listener->_id = listener->_id;
+  internal_listener->_next = listener->next;
+  internal_listener->_error = listener->error;
+  internal_listener->_complete = listener->complete;
+  return internal_listener;
+}
+
 static void _add_listener (ByteStream *stream, ByteListener *listener) {
-  stream->_add (stream, (ByteListenerInternal *) listener);
+  stream->_add (stream, _to_internal_listener (listener));
 }
 
 static void _remove_listener (ByteStream *stream, ByteListener *listener) {
-  stream->_remove (stream, (ByteListenerInternal *) listener);
+  ByteListenerInternal *internal_listener = xmalloc (sizeof (ByteListenerInternal));
+  internal_listener->_id = listener->_id;
+  stream->_remove (stream, internal_listener);
 }
 
 static ByteStream *_create (ByteProducerInternal *producer) {
@@ -98,7 +116,7 @@ static ByteStream *_create (ByteProducerInternal *producer) {
   stream->_teardown = _teardown;
   stream->_stop_now = _stop_now;
   stream->_add = _add;
-  stream->_remove = remove;
+  stream->_remove = _remove;
   variable_length_array_initialize (&(stream->_internal_listeners));
   stream->_stop_id = STOP_ID_NONE;
   stream->_error_code = ERROR_NONE;
