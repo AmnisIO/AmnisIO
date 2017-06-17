@@ -1,12 +1,11 @@
-#ifndef C_BYTEPRODUCER_H
-#define C_BYTEPRODUCER_H
+#ifndef C_BYTEPRODUCERINTERNAL_H
+#define C_BYTEPRODUCERINTERNAL_H
 
-#include "ByteListener.h"
-#include "VariableLengthArray.h"
+#include "ByteListenerInternal.h"
 
 typedef struct ByteProducerInternal {
-  void (*_start) (struct ByteListenerInterl *listener);
+  void (*_start) (struct ByteListenerInternal *listener);
   void (*_stop) ();
 } ByteProducerInternal;
 
-#endif // C_BYTEPRODUCER_H
+#endif // C_BYTEPRODUCERINTERNAL_H
