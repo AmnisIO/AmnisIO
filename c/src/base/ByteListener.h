@@ -1,12 +1,12 @@
 #ifndef C_BYTELISTENER_H
 #define C_BYTELISTENER_H
 
-#include "Byte.h"
+#include "ByteListenerGeneric.h"
 
 typedef struct ByteListener {
-  void (*next) (void *self, Byte v);
-  void (*error) (void *self, int e);
-  void (*complete) (void *self);
+  byte_listener_next next;
+  byte_listener_error error;
+  byte_listener_complete complete;
 } ByteListener;
 
 #endif //C_BYTELISTENER_H
