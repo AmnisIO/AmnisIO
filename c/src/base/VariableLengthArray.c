@@ -1,5 +1,9 @@
 #include "VariableLengthArray.h"
 
+static int _length (VariableLengthArray *array) {
+  return array->index + 1;
+}
+
 static int _push (VariableLengthArray *array, void *data) {
   size_t toallocate;
   size_t size = sizeof (void *);
@@ -11,10 +15,6 @@ static int _push (VariableLengthArray *array, void *data) {
   array->memory[++array->index] = data;
   array->used = array->used + size;
   return _length (array);
-}
-
-static int _length (VariableLengthArray *array) {
-  return array->index + 1;
 }
 
 static void _clear (VariableLengthArray *array) {
