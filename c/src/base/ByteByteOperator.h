@@ -5,11 +5,11 @@
 #include "ByteSender.h"
 
 typedef struct ByteByteOperator {
-  ByteSender *sender;
+  ByteSender *_sender;
   ByteProducerInternal *_producer;
   ByteListenerInternal *_listener;
   int type;
-  ByteStream* ins;
+  ByteStream* in;
   void (*_start) (ByteStream *out);
 } ByteByteOperator;
 
