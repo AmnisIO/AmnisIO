@@ -56,16 +56,28 @@ static void _stop_now (ByteStream *self) {
 
 static void _add (ByteStream *stream, ByteListenerInternal *listener) {
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
-  internal_listeners->push (internal_listeners, listener);
-  int length = internal_listeners->length (internal_listeners);
+  int length = internal_listeners->push (internal_listeners, listener);
   if (length > 1) return;
   if (stream->_stop_id != STOP_ID_NONE) {
-    // clear this task
-    // clearTimeout(this._stopID);
+    // TODO: clear the stop task
+    // _clear_timeout(stream->_stop_id);
     stream->_stop_id = STOP_ID_NONE;
   } else {
     ByteProducerInternal *producer = stream->_producer;
     if (producer != NULL) producer->_start (producer, (ByteListenerInternal *) stream);
+  }
+}
+
+static void _remove (ByteStream *stream, ByteListenerInternal *listener) {
+  VariableLengthArray *internal_listeners = stream->_internal_listeners;
+  int index = internal_listeners->index_of (internal_listeners, listener);
+  if (index > -1) {
+    int length = internal_listeners->remove (internal_listeners, index);
+    if (stream->_producer != NULL && length == 0) {
+      stream->_error_code = ERROR_NONE;
+      // TODO: schedule a stop
+      // stream->_stop_id = _set_timeout (stream->_stop_now, 0);
+    }
   }
 }
 
@@ -78,6 +90,7 @@ static ByteStream *_create (ByteProducerInternal *producer) {
   stream->_teardown = _teardown;
   stream->_stop_now = _stop_now;
   stream->_add = _add;
+  stream->_remove = remove;
   variable_length_array_initialize (&(stream->_internal_listeners));
   stream->_stop_id = STOP_ID_NONE;
   stream->_error_code = ERROR_NONE;
