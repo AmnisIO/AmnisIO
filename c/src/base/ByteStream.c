@@ -1,4 +1,5 @@
 #include "ByteStream.h"
+#include "ByteByteMap.h"
 
 int STOP_ID_NONE = 0;
 
@@ -113,6 +114,7 @@ static ByteSubscription *_subscribe (ByteStream *stream, ByteListener *listener)
   subscription->unsubscribe = _unsubscribe_with_subscription;
   return (ByteSubscription *) subscription;
 }
+static ByteStream *_map (ByteStream *self, byte_byte_map_function map);
 
 static ByteStream *_create (ByteProducerInternal *producer) {
   ByteStream *stream = xmalloc (sizeof (ByteStream));
@@ -131,7 +133,12 @@ static ByteStream *_create (ByteProducerInternal *producer) {
   stream->add_listener = _add_listener;
   stream->remove_listener = _remove_listener;
   stream->subscribe = _subscribe;
+  stream->map = _map;
   return stream;
+}
+
+static ByteStream *_map (ByteStream *self, byte_byte_map_function map) {
+  return _create ((ByteProducerInternal *) byte_byte_map_create (self, map));
 }
 
 ByteStream *byte_stream_create (ByteProducer *producer) {

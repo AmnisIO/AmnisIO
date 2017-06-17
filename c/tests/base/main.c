@@ -10,6 +10,10 @@ void _complete (ByteListener *self) {
   printf ("completed\n");
 }
 
+Byte add_one (Byte value) {
+  return value + (Byte) 1;
+}
+
 int main () {
   VariableLengthArray *one_to_four = variable_length_array_create ();
   int a = 1, b = 2, c = 3, d = 4;
@@ -20,8 +24,9 @@ int main () {
   one_to_four->push (one_to_four, &d);
   ByteStream *stream = byte_stream_from_variable_length_array (one_to_four);
   ByteStream *stream_2 = byte_stream_from_array (five_to_eight, 4);
+  ByteStream *stream_3 = stream_2->map (stream_2, add_one);
   ByteListener *listener = byte_listener_create (_next, _error, _complete);
   stream->add_listener (stream, listener);
-  stream_2->add_listener (stream_2, listener);
+  stream_3->add_listener (stream_3, listener);
   return 0;
 }

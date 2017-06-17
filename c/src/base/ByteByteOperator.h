@@ -11,7 +11,6 @@ typedef enum OperatorType {
 
 typedef struct ByteByteOperator {
   ByteObservableType type;
-  OperatorType operation;
   byte_producer_internal_start _start;
   byte_producer_internal_stop _stop;
   byte_listener_internal_next _next;
@@ -19,6 +18,7 @@ typedef struct ByteByteOperator {
   byte_listener_internal_complete _complete;
   ByteStream *in;
   ByteStream *out;
+  OperatorType operation;
 } ByteByteOperator;
 
 ByteByteOperator *byte_byte_operator_create ();
