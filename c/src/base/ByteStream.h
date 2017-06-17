@@ -4,8 +4,6 @@
 #include "ByteListener.h"
 #include "ByteProducer.h"
 #include "ByteSubscription.h"
-#include "ByteListenerInternal.h"
-#include "ByteProducerInternal.h"
 #include "VariableLengthArray.h"
 #include "Boolean.h"
 
@@ -13,9 +11,9 @@ typedef Byte (*byte_steam_map_function) (Byte value);
 typedef Boolean (*byte_steam_filter_function) (Byte value);
 
 typedef struct ByteStream {
-  byte_listener_next _next;
-  byte_listener_error _error;
-  byte_listener_complete _complete;
+  byte_listener_internal_next _next;
+  byte_listener_internal_error _error;
+  byte_listener_internal_complete _complete;
   ByteProducerInternal *_producer;
   VariableLengthArray *_internal_listeners;
   int _stop_id;

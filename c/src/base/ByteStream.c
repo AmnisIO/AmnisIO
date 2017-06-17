@@ -4,7 +4,7 @@ int STOP_ID_NONE = 0;
 
 int ERROR_NONE = 0;
 
-static void _next (void *self, Byte value) {
+static void _next (ByteListenerInternal *self, Byte value) {
   ByteStream *stream = (ByteStream *) self;
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
   int length = internal_listeners->length (internal_listeners);
@@ -15,7 +15,7 @@ static void _next (void *self, Byte value) {
   }
 }
 
-static void _error (void *self, int error) {
+static void _error (ByteListenerInternal *self, int error) {
   ByteStream *stream = (ByteStream *) self;
   if (stream->_error_code != ERROR_NONE) return;
   stream->_error_code = error;
@@ -29,7 +29,7 @@ static void _error (void *self, int error) {
   stream->_teardown (stream);
 }
 
-static void _complete (void *self) {
+static void _complete (ByteListenerInternal *self) {
   ByteStream *stream = (ByteStream *) self;
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
   int length = internal_listeners->length (internal_listeners);
@@ -68,15 +68,9 @@ static void _add (ByteStream *stream, ByteListenerInternal *listener) {
   }
 }
 
-static Boolean _if_next_equal (void *data, void *to_find) {
-  ByteListenerInternal *actual = (ByteListenerInternal *) to_find;
-  ByteListenerInternal *current = (ByteListenerInternal *) data;
-  return current->_next == actual->_next;
-}
-
 static void _remove (ByteStream *stream, ByteListenerInternal *listener) {
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
-  int index = internal_listeners->find_index (internal_listeners, listener, _if_next_equal);
+  int index = internal_listeners->index_of (internal_listeners, listener);
   if (index > -1) {
     int length = internal_listeners->remove (internal_listeners, index);
     if (stream->_producer != NULL && length == 0) {
@@ -88,22 +82,34 @@ static void _remove (ByteStream *stream, ByteListenerInternal *listener) {
   }
 }
 
-static ByteListenerInternal *_to_internal_listener (ByteListener *listener) {
-  ByteListenerInternal *internal_listener = xmalloc (sizeof (ByteListenerInternal));
-  internal_listener->_next = listener->next;
-  internal_listener->_error = listener->error;
-  internal_listener->_complete = listener->complete;
-  return internal_listener;
-}
-
 static void _add_listener (ByteStream *stream, ByteListener *listener) {
-  stream->_add (stream, _to_internal_listener (listener));
+  stream->_add (stream, (ByteListenerInternal *) listener);
 }
 
 static void _remove_listener (ByteStream *stream, ByteListener *listener) {
-  ByteListenerInternal *internal_listener = xmalloc (sizeof (ByteListenerInternal));
-  internal_listener->_next = listener->next;
-  stream->_remove (stream, internal_listener);
+  stream->_remove (stream, (ByteListenerInternal *) listener);
+}
+
+typedef struct ByteSubscriptionImplementation {
+  void (*unsubscribe) (struct ByteSubscription *self);
+  ByteStream *stream;
+  ByteListener *listener;
+} ByteSubscriptionImplementation;
+
+static void _unsubscribe (ByteStream *stream, ByteListener *listener) {
+
+}
+
+static void _unsubscribe_with_subscription (ByteSubscription *subscription) {
+  ByteSubscriptionImplementation *implementation = (ByteSubscriptionImplementation *) subscription;
+  _unsubscribe (implementation->stream, implementation->listener);
+}
+
+static ByteSubscription *_subscribe (ByteStream *stream, ByteListener *listener) {
+  ByteSubscriptionImplementation *subscription = xmalloc (sizeof (ByteSubscriptionImplementation));
+  subscription->stream = stream;
+  subscription->listener = listener;
+  return (ByteSubscription *) subscription;
 }
 
 static ByteStream *_create (ByteProducerInternal *producer) {
@@ -121,5 +127,6 @@ static ByteStream *_create (ByteProducerInternal *producer) {
   stream->_error_code = ERROR_NONE;
   stream->add_listener = _add_listener;
   stream->remove_listener = _remove_listener;
+  stream->subscribe = _subscribe;
   return stream;
 }

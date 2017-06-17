@@ -1,12 +1,17 @@
 #ifndef C_BYTELISTENERINTERNAL_H
 #define C_BYTELISTENERINTERNAL_H
 
-#include "ByteListenerGeneric.h"
+#include "Byte.h"
+#include "utils.h"
 
 typedef struct ByteListenerInternal {
-  byte_listener_next _next;
-  byte_listener_error _error;
-  byte_listener_complete _complete;
+  void (*_next) (struct ByteListenerInternal *self, Byte v);
+  void (*_error) (struct ByteListenerInternal *self, int e);
+  void (*_complete) (struct ByteListenerInternal *self);
 } ByteListenerInternal;
+
+typedef void (*byte_listener_internal_next) (struct ByteListenerInternal *self, Byte v);
+typedef void (*byte_listener_internal_error) (struct ByteListenerInternal *self, int e);
+typedef void (*byte_listener_internal_complete) (struct ByteListenerInternal *self);
 
 #endif //C_BYTELISTENERINTERNAL_H
