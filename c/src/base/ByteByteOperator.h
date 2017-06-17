@@ -8,7 +8,7 @@ typedef struct ByteByteOperator {
   ByteProducerInternal *_producer;
   ByteListenerInternal *_listener;
   int type;
-  ByteStream* in;
+  ByteStream *in;
   ByteStream *out;
   void (*_start) (struct ByteByteOperator *self, ByteStream *out);
 } ByteByteOperator;
