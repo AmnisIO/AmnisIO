@@ -68,15 +68,15 @@ static void _add (ByteStream *stream, ByteListenerInternal *listener) {
   }
 }
 
-static Boolean _if_id_equal (void *data, void *to_find) {
+static Boolean _if_next_equal (void *data, void *to_find) {
   ByteListenerInternal *actual = (ByteListenerInternal *) to_find;
   ByteListenerInternal *current = (ByteListenerInternal *) data;
-  return current->_id == actual->_id;
+  return current->_next == actual->_next;
 }
 
 static void _remove (ByteStream *stream, ByteListenerInternal *listener) {
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
-  int index = internal_listeners->find_index (internal_listeners, listener, _if_id_equal);
+  int index = internal_listeners->find_index (internal_listeners, listener, _if_next_equal);
   if (index > -1) {
     int length = internal_listeners->remove (internal_listeners, index);
     if (stream->_producer != NULL && length == 0) {
@@ -90,7 +90,6 @@ static void _remove (ByteStream *stream, ByteListenerInternal *listener) {
 
 static ByteListenerInternal *_to_internal_listener (ByteListener *listener) {
   ByteListenerInternal *internal_listener = xmalloc (sizeof (ByteListenerInternal));
-  internal_listener->_id = listener->_id;
   internal_listener->_next = listener->next;
   internal_listener->_error = listener->error;
   internal_listener->_complete = listener->complete;
@@ -103,7 +102,7 @@ static void _add_listener (ByteStream *stream, ByteListener *listener) {
 
 static void _remove_listener (ByteStream *stream, ByteListener *listener) {
   ByteListenerInternal *internal_listener = xmalloc (sizeof (ByteListenerInternal));
-  internal_listener->_id = listener->_id;
+  internal_listener->_next = listener->_next;
   stream->_remove (stream, internal_listener);
 }
 

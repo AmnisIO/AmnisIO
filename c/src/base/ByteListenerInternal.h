@@ -5,7 +5,6 @@
 #include "utils.h"
 
 typedef struct ByteListenerInternal {
-  int _id;
   void (*_next) (void *self, Byte v);
   void (*_error) (void *self, int e);
   void (*_complete) (void *self);
