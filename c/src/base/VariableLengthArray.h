@@ -8,13 +8,13 @@ typedef struct VariableLengthArray {
   Size allocated;
   Size used;
   int index;
-  void (*push) (struct VariableLengthArray *array, void *data);
+  int (*push) (struct VariableLengthArray *array, void *data);
   int (*length) (struct VariableLengthArray *array);
   void (*clear) (struct VariableLengthArray *array);
   void (*free) (struct VariableLengthArray *array);
   void *(*get) (struct VariableLengthArray *array, int index);
   void (*insert) (struct VariableLengthArray *array, int index, void *data);
-  void (*remove) (struct VariableLengthArray *array, int index);
+  int (*remove) (struct VariableLengthArray *array, int index);
   int (*index_of) (struct VariableLengthArray *array, void *data);
 } VariableLengthArray;
 

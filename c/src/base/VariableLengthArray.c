@@ -1,6 +1,6 @@
 #include "VariableLengthArray.h"
 
-static void _push (VariableLengthArray *array, void *data) {
+static int _push (VariableLengthArray *array, void *data) {
   size_t toallocate;
   size_t size = sizeof (void *);
   if ((array->allocated - array->used) < size) {
@@ -10,6 +10,7 @@ static void _push (VariableLengthArray *array, void *data) {
   }
   array->memory[++array->index] = data;
   array->used = array->used + size;
+  return _length (array);
 }
 
 static int _length (VariableLengthArray *array) {
@@ -35,13 +36,14 @@ static void *_get (VariableLengthArray *array, int index) {
 }
 
 static void _insert (VariableLengthArray *array, int index, void *data) {
-  if (index < 0 || index > array->index) return;
+  if (index < 0 || index > array->index) return ;
   array->memory[index] = data;
+
 }
 
-static void _remove (VariableLengthArray *array, int index) {
+static int _remove (VariableLengthArray *array, int index) {
   int length = array->length (array);
-  if (length <= index) return;
+  if (length <= index) return length;
   for (int i = index; i < length; i++) {
     array->insert (array, i, array->get (array, i + 1));
   }
@@ -49,6 +51,7 @@ static void _remove (VariableLengthArray *array, int index) {
   array->memory[one_less] = NULL;
   array->used = array->used - 1;
   array->index = one_less;
+  return one_less;
 }
 
 static int _index_of (VariableLengthArray *array, void *data) {
