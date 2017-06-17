@@ -15,6 +15,7 @@ typedef struct VariableLengthArray {
   void *(*get) (struct VariableLengthArray *array, int index);
   void (*insert) (struct VariableLengthArray *array, int index, void *data);
   void (*remove) (struct VariableLengthArray *array, int index);
+  int (*index_of) (struct VariableLengthArray *array, void *data);
 } VariableLengthArray;
 
 void variable_length_array_initialize (VariableLengthArray **array);

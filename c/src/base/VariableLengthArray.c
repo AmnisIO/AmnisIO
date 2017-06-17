@@ -51,6 +51,14 @@ static void _remove (VariableLengthArray *array, int index) {
   array->index = one_less;
 }
 
+static int _index_of (VariableLengthArray *array, void *data) {
+  int length = _length (array);
+  for (int i = 0; i < length; i++) {
+    if (array->memory[i] == data) return i;
+  }
+  return -1;
+};
+
 void variable_length_array_initialize (VariableLengthArray **array) {
   *array = (VariableLengthArray *) malloc (sizeof (VariableLengthArray));
   (*array)->memory = NULL;
@@ -64,6 +72,7 @@ void variable_length_array_initialize (VariableLengthArray **array) {
   (*array)->get = _get;
   (*array)->insert = _insert;
   (*array)->remove = _remove;
+  (*array)->index_of = _index_of;
 }
 
 
