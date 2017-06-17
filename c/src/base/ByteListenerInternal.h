@@ -5,9 +5,9 @@
 #include "utils.h"
 
 typedef struct ByteListenerInternal {
-  void (*_next) (struct ByteListenerInternal *self, Byte v);
-  void (*_error) (struct ByteListenerInternal *self, int e);
-  void (*_complete) (struct ByteListenerInternal *self);
+  void (*next) (struct ByteListenerInternal *self, Byte v);
+  void (*error) (struct ByteListenerInternal *self, int e);
+  void (*complete) (struct ByteListenerInternal *self);
 } ByteListenerInternal;
 
 ByteListenerInternal *byte_listener_internal_create_noop ();
