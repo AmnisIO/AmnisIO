@@ -4,6 +4,7 @@
 #include "Byte.h"
 
 typedef struct ByteListener {
+  int _id;
   void (*next) (struct ByteListener *self, Byte v);
   void (*error) (struct ByteListener *self, int e);
   void (*complete) (struct ByteListener *self);
