@@ -1,16 +1,16 @@
 #ifndef C_BYTESTREAM_H
 #define C_BYTESTREAM_H
 
-#include "ByteProducerInternal.h"
-#include "VariableLengthArray.h"
+#include "ByteListener.h"
+#include "ByteStreamSubscription.h"
+#include "ByteProducer.h"
 
 typedef struct ByteStream {
-  void (*next) (struct ByteStream *self, Byte v);
-  void (*error) (struct ByteStream *self, int e);
-  void (*complete) (struct ByteStream *self);
-  VariableLengthArray *listeners;
+  void (*add_listener) (ByteListener *listener);
+  void (*remove_listener) (ByteListener *listener);
+  ByteStreamSubscription *(*subscribe) (ByteListener *listener);
 } ByteStream;
 
-ByteStream *byte_stream_create (ByteProducerInternal *producer);
+ByteStream *byte_stream_create (ByteProducer *producer);
 
 #endif // C_BYTESTREAM_H
