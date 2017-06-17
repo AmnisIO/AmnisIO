@@ -4,7 +4,7 @@ int STOP_ID_NONE = 0;
 
 int ERROR_NONE = 0;
 
-static void _next (ByteListenerInternal *self, Byte value) {
+static void _next (void *self, Byte value) {
   ByteStream *stream = (ByteStream *) self;
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
   int length = internal_listeners->length (internal_listeners);
@@ -15,7 +15,7 @@ static void _next (ByteListenerInternal *self, Byte value) {
   }
 }
 
-static void _error (ByteListenerInternal *self, int error) {
+static void _error (void *self, int error) {
   ByteStream *stream = (ByteStream *) self;
   if (stream->_error_code != ERROR_NONE) return;
   stream->_error_code = error;
@@ -29,7 +29,7 @@ static void _error (ByteListenerInternal *self, int error) {
   stream->_teardown (stream);
 }
 
-static void _complete (ByteListenerInternal *self) {
+static void _complete (void *self) {
   ByteStream *stream = (ByteStream *) self;
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
   int length = internal_listeners->length (internal_listeners);

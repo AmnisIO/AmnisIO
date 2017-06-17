@@ -13,9 +13,9 @@ typedef Byte (*byte_steam_map_function) (Byte value);
 typedef Boolean (*byte_steam_filter_function) (Byte value);
 
 typedef struct ByteStream {
-  void (*_next) (struct ByteListenerInternal *self, Byte v);
-  void (*_error) (struct ByteListenerInternal *self, int e);
-  void (*_complete) (struct ByteListenerInternal *self);
+  void (*_next) (void *self, Byte v);
+  void (*_error) (void *self, int e);
+  void (*_complete) (void *self);
   ByteProducerInternal *_producer;
   VariableLengthArray *_internal_listeners;
   int _stop_id;
