@@ -54,6 +54,21 @@ static void _stop_now (ByteStream *self) {
   self->_stop_id = STOP_ID_NONE;
 }
 
+static void _add (ByteStream *stream, ByteListenerInternal *listener) {
+  VariableLengthArray *internal_listeners = stream->_internal_listeners;
+  internal_listeners->push (internal_listeners, listener);
+  int length = internal_listeners->length (internal_listeners);
+  if (length > 1) return;
+  if (stream->_stop_id != STOP_ID_NONE) {
+    // clear this task
+    // clearTimeout(this._stopID);
+    stream->_stop_id = STOP_ID_NONE;
+  } else {
+    ByteProducerInternal *producer = stream->_producer;
+    if (producer != NULL) producer->_start (producer, (ByteListenerInternal *) stream);
+  }
+}
+
 static ByteStream *_create (ByteProducerInternal *producer) {
   ByteStream *stream = xmalloc (sizeof (ByteStream));
   stream->_producer = producer;
@@ -62,6 +77,7 @@ static ByteStream *_create (ByteProducerInternal *producer) {
   stream->_complete = _complete;
   stream->_teardown = _teardown;
   stream->_stop_now = _stop_now;
+  stream->_add = _add;
   variable_length_array_initialize (&(stream->_internal_listeners));
   stream->_stop_id = STOP_ID_NONE;
   stream->_error_code = ERROR_NONE;
