@@ -16,9 +16,20 @@ static void _from_array_stop (ByteProducer *self) {
 
 }
 
-ByteProducer *byte_producer_from_array (VariableLengthArray *array) {
+ByteProducer *byte_producer_from_variable_length_array (VariableLengthArray *array) {
   ByteProducerFromArray *producer = xmalloc (sizeof (ByteProducerFromArray));
   producer->array = array;
+  byte_producer_initialize ((ByteProducer *) producer, _from_array_start, _from_array_stop);
+  return (ByteProducer *) producer;
+}
+
+ByteProducer *byte_producer_from_array (Byte array[], int size) {
+  ByteProducerFromArray *producer = xmalloc (sizeof (ByteProducerFromArray));
+  variable_length_array_initialize (&(producer->array));
+  VariableLengthArray *varray = producer->array;
+  for (int i = 0; i < size; i++) {
+    varray->push (varray, array + i);
+  }
   byte_producer_initialize ((ByteProducer *) producer, _from_array_start, _from_array_stop);
   return (ByteProducer *) producer;
 }

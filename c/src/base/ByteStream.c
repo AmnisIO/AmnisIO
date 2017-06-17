@@ -157,7 +157,11 @@ ByteStream *byte_stream_empty () {
   return byte_stream_create (byte_producer_create (_complete_immediately, _never_stop));
 }
 
-ByteStream *byte_stream_from_array (VariableLengthArray *array) {
-  return byte_stream_create (byte_producer_from_array (array));
+ByteStream *byte_stream_from_variable_length_array (VariableLengthArray *array) {
+  return byte_stream_create (byte_producer_from_variable_length_array (array));
+}
+
+ByteStream *byte_stream_from_array (Byte array[], int size) {
+  return byte_stream_create (byte_producer_from_array (array, size));
 }
 

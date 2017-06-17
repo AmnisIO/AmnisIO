@@ -13,5 +13,6 @@ typedef struct ByteProducerFromArray {
   VariableLengthArray *array;
 } ByteProducerFromArray;
 
-ByteProducer *byte_producer_from_array(VariableLengthArray *array);
+ByteProducer *byte_producer_from_variable_length_array(VariableLengthArray *array);
+ByteProducer *byte_producer_from_array(Byte array[], int size);
 #endif //C_BYTEPRODUCERFROMARRAY_H

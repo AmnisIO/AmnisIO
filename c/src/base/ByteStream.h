@@ -37,6 +37,7 @@ typedef struct ByteStream {
 ByteStream *byte_stream_create (ByteProducer *producer);
 ByteStream *byte_stream_never ();
 ByteStream *byte_stream_empty ();
-ByteStream *byte_stream_from_array (VariableLengthArray *array);
+ByteStream *byte_stream_from_variable_length_array (VariableLengthArray *array);
+ByteStream *byte_stream_from_array (Byte array[], int size);
 
 #endif // C_BYTESTREAM_H
