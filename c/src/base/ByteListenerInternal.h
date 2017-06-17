@@ -10,6 +10,6 @@ typedef struct ByteListenerInternal {
   void (*_complete) (struct ByteListenerInternal *self);
 } ByteListenerInternal;
 
-ByteListenerInternal *byte_listener_internal_create ();
+ByteListenerInternal *byte_listener_internal_create_noop ();
 
 #endif //C_BYTELISTENERINTERNAL_H

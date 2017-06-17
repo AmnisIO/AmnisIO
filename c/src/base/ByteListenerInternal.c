@@ -10,7 +10,7 @@ static void _complete (struct ByteListenerInternal *self) {
 
 }
 
-ByteListenerInternal *byte_listener_internal_create () {
+ByteListenerInternal *byte_listener_internal_create_noop () {
   ByteListenerInternal *il = xmalloc (sizeof (ByteListenerInternal));
   il->_next = _next;
   il->_error = _error;
