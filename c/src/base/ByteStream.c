@@ -9,7 +9,7 @@ static void _next (ByteStream *stream, Byte v) {
   }
 };
 
-static void _error (ByteStream *stream, Byte e) {
+static void _error (ByteStream *stream, int e) {
   VariableLengthArray *listeners = stream->listeners;
   int length = listeners->length (listeners);
   for (int i = 0; i < length; i++) {

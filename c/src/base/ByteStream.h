@@ -5,7 +5,7 @@
 
 typedef struct ByteStream {
   void (*next) (struct ByteStream *self, Byte v);
-  void (*error) (struct ByteStream *self, Byte e);
+  void (*error) (struct ByteStream *self, int e);
   void (*complete) (struct ByteStream *self);
   VariableLengthArray *listeners;
 } ByteStream;

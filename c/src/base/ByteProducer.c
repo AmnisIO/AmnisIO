@@ -22,13 +22,13 @@ static void _next (ByteProducer *self, Byte v) {
   }
 }
 
-static void _error (ByteProducer *self, Byte v) {
+static void _error (ByteProducer *self, int e) {
   ByteProducerImplementation *producer = (ByteProducerImplementation *) self;
   VariableLengthArray *listeners = producer->listeners;
   int length = listeners->length (listeners);
   for (int i = 0; i < length; i++) {
     ByteListener *listener = ((ByteListener *) listeners->get (listeners, i));
-    listener->error (listener, v);
+    listener->error (listener, e);
   }
   listeners->free (listeners);
   free (listeners);
