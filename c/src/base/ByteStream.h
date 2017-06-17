@@ -7,8 +7,7 @@
 #include "ByteListenerInternal.h"
 #include "ByteProducerInternal.h"
 #include "VariableLengthArray.h"
-
-typedef uint8_t Boolean;
+#include "Boolean.h"
 
 typedef Byte (*byte_steam_map_function) (Byte value);
 typedef Boolean (*byte_steam_filter_function) (Byte value);
