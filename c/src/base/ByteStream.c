@@ -4,7 +4,7 @@ int STOP_ID_NONE = 0;
 
 int ERROR_NONE = 0;
 
-static void _next (struct ByteListenerInternal *self, Byte value) {
+static void _next (ByteListenerInternal *self, Byte value) {
   ByteStream *stream = (ByteStream *) self;
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
   int length = internal_listeners->length (internal_listeners);
@@ -15,7 +15,7 @@ static void _next (struct ByteListenerInternal *self, Byte value) {
   }
 }
 
-static void _error (struct ByteListenerInternal *self, int error) {
+static void _error (ByteListenerInternal *self, int error) {
   ByteStream *stream = (ByteStream *) self;
   if (stream->_error_code != ERROR_NONE) return;
   stream->_error_code = error;
@@ -29,7 +29,7 @@ static void _error (struct ByteListenerInternal *self, int error) {
   stream->_teardown (stream);
 }
 
-static void _complete (struct ByteListenerInternal *self) {
+static void _complete (ByteListenerInternal *self) {
   ByteStream *stream = (ByteStream *) self;
   VariableLengthArray *internal_listeners = stream->_internal_listeners;
   int length = internal_listeners->length (internal_listeners);
@@ -41,11 +41,17 @@ static void _complete (struct ByteListenerInternal *self) {
   stream->_teardown (stream);
 }
 
-static void _teardown (struct ByteStream *self) {
+static void _teardown (ByteStream *self) {
   if (self->_internal_listeners->length (self->_internal_listeners) == 0) return;
   if (self->_producer != NULL) self->_producer->_stop (self->_producer);
   self->_error_code = ERROR_NONE;
   self->_internal_listeners->clear (self->_internal_listeners);
+}
+
+static void _stop_now (ByteStream *self) {
+  if (self->_producer != NULL) self->_producer->_stop (self->_producer);
+  self->_error_code = ERROR_NONE;
+  self->_stop_id = STOP_ID_NONE;
 }
 
 static ByteStream *_create (ByteProducerInternal *producer) {
@@ -55,6 +61,7 @@ static ByteStream *_create (ByteProducerInternal *producer) {
   stream->_error = _error;
   stream->_complete = _complete;
   stream->_teardown = _teardown;
+  stream->_stop_now = _stop_now;
   variable_length_array_initialize (&(stream->_internal_listeners));
   stream->_stop_id = STOP_ID_NONE;
   stream->_error_code = ERROR_NONE;
