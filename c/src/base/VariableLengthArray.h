@@ -2,6 +2,9 @@
 #define C_VARIABLELENGTHARRAY_H
 
 #include "utils.h"
+#include "Boolean.h"
+
+typedef Boolean (*variable_length_array_is_equal) (void* data, void* to_find);
 
 typedef struct VariableLengthArray {
   void **memory;
@@ -16,6 +19,7 @@ typedef struct VariableLengthArray {
   void (*insert) (struct VariableLengthArray *array, int index, void *data);
   int (*remove) (struct VariableLengthArray *array, int index);
   int (*index_of) (struct VariableLengthArray *array, void *data);
+  int (*find_index) (struct VariableLengthArray *array, void *data, variable_length_array_is_equal is_equal);
 } VariableLengthArray;
 
 void variable_length_array_initialize (VariableLengthArray **array);

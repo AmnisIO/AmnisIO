@@ -36,7 +36,7 @@ static void *_get (VariableLengthArray *array, int index) {
 }
 
 static void _insert (VariableLengthArray *array, int index, void *data) {
-  if (index < 0 || index > array->index) return ;
+  if (index < 0 || index > array->index) return;
   array->memory[index] = data;
 
 }
@@ -62,6 +62,14 @@ static int _index_of (VariableLengthArray *array, void *data) {
   return -1;
 };
 
+static int _find_index (struct VariableLengthArray *array, void *data, variable_length_array_is_equal equal) {
+  int length = _length (array);
+  for (int i = 0; i < length; i++) {
+    if (equal (array->memory[i], data) == 1) return i;
+  }
+  return -1;
+}
+
 void variable_length_array_initialize (VariableLengthArray **array) {
   *array = (VariableLengthArray *) malloc (sizeof (VariableLengthArray));
   (*array)->memory = NULL;
@@ -76,6 +84,7 @@ void variable_length_array_initialize (VariableLengthArray **array) {
   (*array)->insert = _insert;
   (*array)->remove = _remove;
   (*array)->index_of = _index_of;
+  (*array)->find_index = _find_index;
 }
 
 
