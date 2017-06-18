@@ -1,5 +1,6 @@
 #include "ByteStream.h"
 #include "ByteByteMap.h"
+#include "ByteStreamTimer.h"
 
 int STOP_ID_NONE = 0;
 
@@ -60,13 +61,18 @@ static void _add (ByteStream *stream, ByteListenerInternal *listener) {
   int length = internal_listeners->push (internal_listeners, listener);
   if (length > 1) return;
   if (stream->_stop_id != STOP_ID_NONE) {
-    // TODO: clear the stop task
-    // _clear_timeout(stream->_stop_id);
+    byte_stream_timer_clear_timeout (stream->_stop_id);
     stream->_stop_id = STOP_ID_NONE;
   } else {
     ByteProducerInternal *producer = stream->_producer;
     if (producer != NULL) producer->_start (producer, (ByteListenerInternal *) stream);
   }
+}
+
+static void *_stop_stream (void *any) {
+  ByteStream *stream = (ByteStream *)any;
+  stream->_stop_now(stream);
+  return NULL;
 }
 
 static void _remove (ByteStream *stream, ByteListenerInternal *listener) {
@@ -76,9 +82,7 @@ static void _remove (ByteStream *stream, ByteListenerInternal *listener) {
     int length = internal_listeners->remove (internal_listeners, index);
     if (stream->_producer != NULL && length == 0) {
       stream->_error_code = ERROR_NONE;
-      // TODO: schedule a stop
-      // stream->_stop_id = _set_timeout (stream->_stop_now, 0);
-      stream->_stop_now (stream);
+      stream->_stop_id = byte_stream_timer_set_timeout (_stop_stream, stream, 0);
     }
   }
 }
