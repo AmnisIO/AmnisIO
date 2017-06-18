@@ -1,4 +1,4 @@
-import { Sources, Sinks, HIGH, LOW, run, byte, createSinks } from '../../../src/boards/arduino-uno';
+import { Sources, Sinks, HIGH, LOW, run, byte, createSinks } from '../src/arduino-uno';
 
 function toggle(value: byte): byte {
   return value == HIGH ? LOW : HIGH;
