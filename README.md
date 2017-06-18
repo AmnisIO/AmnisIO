@@ -1,8 +1,10 @@
-# RIoT
-A reactive way to write IoT - Reactive IoT (RIoT), inspired by [Cycle.js](http://cycle.js.org/)
+# AmnisIO
+Write reactive programs for various platforms using [TypeScript](https://www.typescriptlang.org/).
+
+Inspired by [Cycle.js](http://cycle.js.org/) and powered by [PlatformIO](http://platformio.org/)
 
 ## The what, the why, and the how
-`riot` will enable you to write IoT programs in a reactive way.
+`AmnisIO` will enable you to write IoT programs in a reactive way.
 
 Every IoT program, from blinking LEDs to switching, is basically a program that reacts to inputs from the device, and pushes outputs to the device. Why not write it declaratively, instead of writing it imperatively? One of the main inhibitors to this approach is the need to write programs for IoT devices in C. A dynamic language like JavaScript allows you to use FRP in order to write the same programs reactively. Enabling people to write IoT programs in JavaScript, and having it transpiled into a C program that can run on the IoT device (as opposed to having a serial connection) is the goal of this project.
 
@@ -11,7 +13,7 @@ Towards this, we will be building a stream library in C, and we will using an ex
 We hope to enable you to write, in TypeScript, a blinking LEDs program:
 ```js
 // Use reactive-iot/arduino-uno
-import { Sources, Sinks, HIGH, LOW, run, byte, createSinks } from '@reactive-iot/arduino-uno';
+import { Sources, Sinks, HIGH, LOW, run, byte, createSinks } from '@amnisio/arduino-uno';
 
 // toggles a LOW/HIGH value
 function toggle(value: byte): byte {
@@ -41,7 +43,7 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 ## Status
 ### C
 ###### Stream Library
-* Supports only streams of `byte`s (or uint8, 0-255)
+* Supports only streams of `Byte`s (or uint8, 0-255)
 * The only possible operator is MAP
 
 ###### Drivers
