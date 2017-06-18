@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 typedef uint8_t Boolean;
-const Boolean BOOLEAN_TRUE = 1;
-const Boolean BOOLEAN_FALSE = 0;
+const Boolean BOOLEAN_TRUE;
+const Boolean BOOLEAN_FALSE;
 
 #endif //C_BOOLEAN_H
