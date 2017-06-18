@@ -6,7 +6,6 @@ static void _from_array_start (ByteProducer *self, ByteListenerInternal *listene
   VariableLengthArray *array = producer->array;
   int length = array->length (array);
   for (int i = 0; i < length; i++) {
-    // TODO: Check if this is correct
     Byte *value = array->get (array, i);
     byte_listener_internal_next_get (listener) (listener, *value);
   }
