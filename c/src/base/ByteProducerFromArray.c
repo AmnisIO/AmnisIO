@@ -1,4 +1,5 @@
 #include "ByteProducerFromArray.h"
+#include "ByteListernerManager.h"
 
 static void _from_array_start (ByteProducer *self, ByteListenerInternal *listener) {
   ByteProducerFromArray *producer = (ByteProducerFromArray *) self;
@@ -7,9 +8,9 @@ static void _from_array_start (ByteProducer *self, ByteListenerInternal *listene
   for (int i = 0; i < length; i++) {
     // TODO: Check if this is correct
     Byte *value = array->get (array, i);
-    listener->_next (listener, *value);
+    byte_listener_internal_next_get (listener) (listener, *value);
   }
-  listener->_complete (listener);
+  byte_listener_internal_complete_get (listener) (listener);
 }
 
 static void _from_array_stop (ByteProducer *self) {
