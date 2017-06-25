@@ -5,5 +5,8 @@
   "main": "index.ts",
   "repository": "https://github.com/AmnisIO/AmnisIO.git",
   "author": "Sudarsan Balaji <Sudarsan.Balaji@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@amnisio/typewriter": "^0.0.6"
+  }
 }
