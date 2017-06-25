@@ -1,0 +1,9 @@
+{
+  "name": "amnisio",
+  "version": "0.0.1",
+  "description": "Write functional reactive code for various platforms using TypeScript",
+  "main": "index.ts",
+  "repository": "https://github.com/AmnisIO/AmnisIO.git",
+  "author": "Sudarsan Balaji <Sudarsan.Balaji@outlook.com>",
+  "license": "MIT"
+}
