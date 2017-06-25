@@ -11,10 +11,12 @@ declare module 'rivulet' {
     sample: (input$: Rivulet<T>) => Rivulet<T>;
     delay: (delay: number) => Rivulet<T>;
   }
-  
+
   export interface ByteStream extends Rivulet<Byte> {
 
   }
 
   export const periodic: (period: number) => ByteStream;
+  export const never: () => ByteStream;
+  export const empty: () => ByteStream;
 }
