@@ -1,12 +1,15 @@
-import { Sources, Sinks, HIGH, LOW, run, byte, createSinks } from '../src/arduino-uno';
+import { ByteStream, Byte, periodic } from 'rivulet';
+import { Sources, Sinks, HIGH, LOW, run, createSinks } from '@amnisio/arduino-uno';
 
-function toggle(value: byte): byte {
+function toggle(value: Byte): Byte {
   return value == HIGH ? LOW : HIGH;
 }
 
 function blink(arduino: Sources): Sinks {
   const sinks: Sinks = createSinks();
-  sinks.LED$ = arduino.LED$.map(toggle);
+  const sample$: ByteStream = periodic(500);
+  const sampledLED$: ByteStream = sample$.sample(arduino.LED$);
+  sinks.LED$ = sampledLED$.map(toggle);
   return sinks;
 }
 
