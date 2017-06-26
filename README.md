@@ -34,44 +34,13 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 
 ## Status
 
-### C
-
-###### Stream Library (rivulet)
-
-* Supports only streams of `Byte`s (or uint8, 0-255).
-* We have operators like map, mapTo, filter, delay, sample, take, drop, and last.
-* We are building more useful operators as and when possible.
-
-###### Drivers (Platform-specific frameworks)
-
-* Arduino UNO driver is working, with digital inputs and outputs (analog inputs to be added shortly).
-* Drivers targeting other platforms need to be added.
-
-### TypeScript
-
-###### Stream Library
-
-* Type definitions for [rivulet](https://github.com/AmnisIO/rivulet) have been crafted.
-* It is fully usable to write TypeScript code targeting any platform.
-* It is testable by means of Arduino Uno framework for now.
-
-###### Drivers (Platform-specific frameworks)
-
-* Arduino UNO driver has been written, with digital inputs and outputs (analog inputs to be added shortly).
-* We are able to get a basic blink application working.
-* Drivers targeting other platforms need to be added.
-
-### Transpiler (typewriter)
-
-* TypeScript Compiler API is used.
-* We are able to transpile some basic structures involving `Byte`s into C.
-* We are able to run the transpiled code on the Arduino Uno.
-* Type inference has to be worked upon.
-* Anonymous functions should be helpful.
-
-### AmnisIO
-
-* A node-based cross-platform CLI is in progress.
+| Area | Status | Repository |
+| --- | --- | ---|
+| Stream Library (C) | Ready | [rivulet](https://github.com/AmnisIO/rivulet) |
+| Board/Framework (C) | Ready for Arduino UNO | [gyrus](https://github.com/AmnisIO/gyrus) |
+| Stream Libary Definitions (TS) | Inaccessible | [rivulet.d.ts](https://github.com/AmnisIO/AmnisIO/blob/master/%40types/rivulet.d.ts) |
+| Board/Framework Definitions (TS) | Inaccessible | [arduino-uno.d.ts](https://github.com/AmnisIO/AmnisIO/blob/master/%40types/arduino-uno.d.ts) |
+| AmnisIO CLI | Published, Needs more work | [AmnisIO](https://github.com/AmnisIO/AmnisIO) |
 
 ## Getting Started
 
