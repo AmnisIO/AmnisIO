@@ -62,5 +62,78 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 ### AmnisIO
 * A node-based cross-platform CLI is in progress.
 
+## Getting Started
+We are working on getting a CLI for bootstrapping. For now, we can work with the Arduino Uno.
+
+Please install platformio. Instructions [here](http://docs.platformio.org/en/latest/installation.html).
+The platformio executable should be in added to the PATH.
+
+```bash
+mkdir amnisio_test
+cd amnisio_test
+npm init
+npm install amnisio --save-dev
+```
+
+Add a configuration file
+```bash
+touch .amnisio.config.json
+```
+with the following contents
+```json
+{
+    "source": "app.ts",
+    "output": "app.c",
+    "board": "uno"
+}
+```
+
+Add a source file
+```bash
+touch index.ts
+```
+with the following contents
+```ts
+import { ByteStream, Byte, periodic } from 'rivulet';
+import { Sources, Sinks, HIGH, LOW, run, createSinks } from '@amnisio/arduino-uno';
+
+function toggle(value: Byte): Byte {
+  return value == HIGH ? LOW : HIGH;
+}
+
+function blink(arduino: Sources): Sinks {
+  const sinks: Sinks = createSinks();
+  const sample$: ByteStream = periodic(500);
+  const sampledLED$: ByteStream = sample$.sample(arduino.LED$);
+  sinks.LED$ = sampledLED$.map(toggle);
+  return sinks;
+}
+
+run(blink);
+```
+*For now the code may not compile, we are still working on the type definitions*
+
+Add the following scripts to your `package.json`:
+```json
+{
+  "initialize": "amnisio init",
+  "build": "amnisio build",
+  "deploy": "amnisio deploy"
+}
+```
+
+Now, time to initialize the project.
+```bash
+npm run initialize
+```
+The arduino uno board configuration (which is the one available at the moment, and entered in the config file) is initialized. The necessary files are downloaded, so please be patient while the initialization happens. Once the initialization is complete, connect your arduino to the computer and get ready (Windows users make sure the required USB drivers are installed).
+```bash
+npm run deploy
+```
+
+You have your first AmnisIO project running on your Arduino UNO!
+
+We will expand to more platforms and examples soon.
+
 ## Contributing
 With such a lofty goal, we will need all the help we can get. However, at the moment, we are in a very nascent stage and it would take us some time to set up some guidelines towards contribution, etc. Please feel free to open up issues on this repo till then.
