@@ -90,7 +90,7 @@ with the following contents
 
 Add a source file
 ```bash
-touch index.ts
+touch app.ts
 ```
 with the following contents
 ```ts
