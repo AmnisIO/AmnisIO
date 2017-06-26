@@ -1,6 +1,6 @@
 {
   "name": "amnisio",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Write functional reactive code for various platforms using TypeScript",
   "main": "dist/configs/index.ts",
   "typings": "dist/configs/index.d.ts",
@@ -24,6 +24,7 @@
     "@amnisio/typewriter": "^0.0.13",
     "find-up": "^2.1.0",
     "github": "^9.2.0",
+    "node-fetch": "^1.7.1",
     "shelljs": "^0.7.8",
     "yargs": "^8.0.2"
   }
