@@ -2,6 +2,7 @@ import { BoardConfiguration } from './types';
 
 export const config: BoardConfiguration = {
   platformio_identifier: 'uno',
-  gyrus_repository: 'https://github.com/AmnisIO/gyrus',
-  gyrus_directory: 'arduino_uno'
+  library_repositories: ['https://github.com/AmnisIO/gyrus.git', 'https://github.com/AmnisIO/rivulet.git'],
+  library_file_globs: ['gyrus/src/*.{c,h}', 'rivulet/src/*.{c,h}'],
+  exclude_library_file_globs: ['gyrus/src/Arduino.h']
 };

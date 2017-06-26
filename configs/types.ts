@@ -1,5 +1,6 @@
 export interface BoardConfiguration {
   platformio_identifier: string;
-  gyrus_repository: string;
-  gyrus_directory: string;
+  library_repositories: string[];
+  library_file_globs: string[];
+  exclude_library_file_globs: string[];
 }
