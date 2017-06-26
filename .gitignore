@@ -330,10 +330,12 @@ jspm_packages
 # Visual Studio Code 
 *.browse*
 
-transpiler/src/**.js
+dist
 
 c/CMakeLists.txt
 c/cmake-build-debug/
 
 # AmnisIO specific
 .amnisio
+
+
