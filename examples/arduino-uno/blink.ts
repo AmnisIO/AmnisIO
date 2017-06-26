@@ -7,7 +7,7 @@ function toggle(value: Byte): Byte {
 
 function blink(arduino: Sources): Sinks {
   const sinks: Sinks = createSinks();
-  const sample$: ByteStream = periodic(1000);
+  const sample$: ByteStream = periodic(100);
   const sampledLED$: ByteStream = sample$.sample(arduino.LED$);
   sinks.LED$ = sampledLED$.map(toggle);
   return sinks;
