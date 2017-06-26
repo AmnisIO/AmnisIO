@@ -111,7 +111,7 @@ function blink(arduino: Sources): Sinks {
 
 run(blink);
 ```
-*__NOTE:__ For now the TypeScript code may not compile, we are still working on the type definitions.*
+*__NOTE:__ For now the TypeScript code may not compile, we are still working on the type definitions. Also, the TypeScript code shown above may look type-verbose. We are working on a type inference solution that should improve our present situation.*
 
 Add the following scripts to your `package.json`:
 ```json
