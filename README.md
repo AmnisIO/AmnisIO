@@ -66,7 +66,7 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 We are working on getting a CLI for bootstrapping. For now, we can work with the Arduino Uno.
 
 Please install platformio. Instructions [here](http://docs.platformio.org/en/latest/installation.html).
-The platformio executable should be in added to the PATH.
+The platformio executable should be added to the PATH.
 
 ```bash
 mkdir amnisio_test
