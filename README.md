@@ -151,7 +151,7 @@ We will expand to more platforms and examples soon.
 
 We provide the stream library, the application library, and the platform specific implementation in C. Accompanying them are the TypeScript interface and counterparts. The AmnisIO configurator provides the correct implementations based on the required platform. This area is customizable so new platforms can be added easily. The configurator also provides the necessary context to the transpiler to intelligently transpile what is required into C. We then rely on configuring platformio to pick the correct platform libraries and to build and deploy our code to the device. Here's a diagrammatic representation if it helps:
 
-[!amnisio-architecture](amnisio-architecture.png)
+![amnisio-architecture](amnisio-architecture.png)
 
 ## Contributing
 
