@@ -111,7 +111,7 @@ function blink(arduino: Sources): Sinks {
 
 run(blink);
 ```
-*For now the code may not compile, we are still working on the type definitions*
+* **NOTE:** For now the TypeScript code may not compile, we are still working on the type definitions.*
 
 Add the following scripts to your `package.json`:
 ```json
