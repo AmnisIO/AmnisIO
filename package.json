@@ -6,7 +6,19 @@
   "repository": "https://github.com/AmnisIO/AmnisIO.git",
   "author": "Sudarsan Balaji <Sudarsan.Balaji@outlook.com>",
   "license": "MIT",
+  "scripts": {
+    "refresh": "rm -rf .amnisio && mkdir .amnisio && mkdir .amnisio/project",
+    "platformio_init": "platformio init -d .amnisio/project -b uno && mkdir .amnisio/project/lib/Gyrus",
+    "git_clone": "git clone https://github.com/AmnisIO/gyrus.git ./.amnisio/board && git clone https://github.com/AmnisIO/rivulet.git ./.amnisio/stream",
+    "copy_gyrus_lib": "copyfiles -f \".amnisio/{board,stream}/**/src/*.{c,h}\" .amnisio/project/lib/Gyrus",
+    "remove_arduino": "rm .amnisio/project/lib/Gyrus/Arduino.h",
+    "typewrite": "typewriter --file ./examples/arduino-uno/blink.ts --outfile .amnisio/project/src/blink.c",
+    "init": "npm run refresh && npm run platformio_init && npm run git_clone && npm run copy_gyrus_lib && npm run remove_arduino",
+    "build": "npm run typewrite && platformio run -d .amnisio/project",
+    "upload": "npm run typewrite && platformio run -d .amnisio/project -t upload"
+  },
   "devDependencies": {
-    "@amnisio/typewriter": "^0.0.6"
+    "@amnisio/typewriter": "^0.0.13",
+    "copyfiles": "^1.2.0"
   }
 }
