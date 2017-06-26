@@ -1,9 +1,11 @@
 # AmnisIO
+
 Write reactive programs for various platforms using [TypeScript](https://www.typescriptlang.org/).
 
 Inspired by [Cycle.js](http://cycle.js.org/) and powered by [PlatformIO](http://platformio.org/)
 
 ## The what, the why, and the how
+
 `AmnisIO` will enable you to write IoT programs in a reactive way.
 
 Every IoT program, from blinking LEDs to switching, is basically a program that reacts to inputs from the device, and pushes outputs to the device. Why not write it declaratively, instead of writing it imperatively? One of the main inhibitors to this approach is the need to write programs for IoT devices in C. A dynamic language like JavaScript allows you to use FRP in order to write the same programs reactively. Enabling people to write IoT programs in JavaScript, and having it transpiled into a C program that can run on the IoT device (as opposed to having a serial connection) is the goal of this project.
@@ -31,28 +33,36 @@ and be able to run the program in your Arduino/Genuino UNO, for example. We use 
 The *Arduino UNO* used here is an example, we will be building towards every platform that is targetable. We will be using the wonderful [PlatformIO](https://github.com/platformio/platformio) in order to accomplish this.
 
 ## Status
+
 ### C
+
 ###### Stream Library (rivulet)
+
 * Supports only streams of `Byte`s (or uint8, 0-255).
 * We have operators like map, mapTo, filter, delay, sample, take, drop, and last.
 * We are building more useful operators as and when possible.
 
 ###### Drivers (Platform-specific frameworks)
+
 * Arduino UNO driver is working, with digital inputs and outputs (analog inputs to be added shortly).
 * Drivers targeting other platforms need to be added.
 
 ### TypeScript
+
 ###### Stream Library
+
 * Type definitions for [rivulet](https://github.com/AmnisIO/rivulet) have been crafted.
 * It is fully usable to write TypeScript code targeting any platform.
 * It is testable by means of Arduino Uno framework for now.
 
 ###### Drivers (Platform-specific frameworks)
+
 * Arduino UNO driver has been written, with digital inputs and outputs (analog inputs to be added shortly).
 * We are able to get a basic blink application working.
 * Drivers targeting other platforms need to be added.
 
 ### Transpiler (typewriter)
+
 * TypeScript Compiler API is used.
 * We are able to transpile some basic structures involving `Byte`s into C.
 * We are able to run the transpiled code on the Arduino Uno.
@@ -60,9 +70,11 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 * Anonymous functions should be helpful.
 
 ### AmnisIO
+
 * A node-based cross-platform CLI is in progress.
 
 ## Getting Started
+
 We are working on getting a CLI for bootstrapping. For now, we can work with the Arduino Uno.
 
 Please install platformio. Instructions [here](http://docs.platformio.org/en/latest/installation.html).
@@ -135,5 +147,12 @@ You have your first AmnisIO project running on your Arduino UNO!
 
 We will expand to more platforms and examples soon.
 
+## How it works
+
+We provide the stream library, the application library, and the platform specific implementation in C. Accompanying them are the TypeScript interface and counterparts. The AmnisIO configurator provides the correct implementations based on the required platform. This area is customizable so new platforms can be added easily. The configurator also provides the necessary context to the transpiler to intelligently transpile what is required into C. We then rely on configuring platformio to pick the correct platform libraries and to build and deploy our code to the device. Here's a diagrammatic representation if it helps:
+
+[!amnisio-architecture](https://raw.githubusercontent.com/AmnisIO/AmnisIO/master/amnisio-architecture.png)
+
 ## Contributing
+
 With such a lofty goal, we will need all the help we can get. However, at the moment, we are in a very nascent stage and it would take us some time to set up some guidelines towards contribution, etc. Please feel free to open up issues on this repo till then.
