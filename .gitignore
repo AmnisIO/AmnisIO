@@ -334,3 +334,6 @@ transpiler/src/**.js
 
 c/CMakeLists.txt
 c/cmake-build-debug/
+
+# AmnisIO specific
+.amnisio
