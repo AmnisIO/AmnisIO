@@ -5,5 +5,6 @@ export interface Library {
 
 export interface BoardConfiguration {
   board: string;
+  dependencies: string[];
   libraries: Library[];
 }
