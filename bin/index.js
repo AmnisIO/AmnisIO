@@ -30,7 +30,10 @@ var argv =
       var board_configuration = board_configs[argv.b];
       var board = board_configuration.board;
       var libraries = board_configuration.libraries;
+      var dependencies = board_configuration.dependencies;
       shell.echo('Selected platform ' + board);
+      shell.echo('Installing npm dependencies');
+      shell.exec('npm install --save-dev ' + dependencies.join(' '));
       shell.echo('Clearing .amnisio');
       shell.rm('-rf', '.amnisio');
       shell.mkdir('.amnisio');
