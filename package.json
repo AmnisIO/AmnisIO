@@ -3,17 +3,12 @@
   "version": "0.0.21",
   "description": "Write functional reactive code for various platforms using TypeScript",
   "main": "dist/configs/index.ts",
-  "typings": [
-    "dist/configs/index.d.ts",
-    "@types/arduino-uno.d.ts",
-    "@types/rivulet.d.ts"
-  ],
+  "typings": "dist/configs/index.d.ts",
   "bin": "bin/index.js",
   "files": [
     "bin",
     "dist",
-    "dist/configs",
-    "@types"
+    "dist/configs"
   ],
   "repository": "https://github.com/AmnisIO/AmnisIO.git",
   "author": "Sudarsan Balaji <Sudarsan.Balaji@outlook.com>",
