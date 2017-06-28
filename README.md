@@ -37,9 +37,10 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 | Area | Status | Repository |
 | :--- | :--- | :--- |
 | Stream Library (C) | Ready | [rivulet](https://github.com/AmnisIO/rivulet) |
-| Board/Framework (C) | Ready for Arduino UNO | [gyrus](https://github.com/AmnisIO/gyrus) |
+| Stream Library (TS) | Ready | [rivulet](https://github.com/AmnisIO/packages/tree/master/rivulet) |
+| Board/Framework (C) | Ready for Arduino UNO | [gyrus](https://github.com/AmnisIO/gyrus/tree/master/arduino_uno) |
+| Board/Framework (TS) | Ready for Arduino UNO | [gyrus](https://github.com/AmnisIO/packages/tree/master/arduino-uno) |
 | Transpiler (TS/C) | Ready | [typewriter](https://github.com/AmnisIO/typewriter) |
-| Type Definitions (TS) | Needs work | [AmnisIO](https://github.com/AmnisIO/AmnisIO/blob/master/%40types) |
 | AmnisIO CLI (TS) | Ready | [AmnisIO](https://github.com/AmnisIO/AmnisIO) |
 
 ## Getting Started
