@@ -8,6 +8,7 @@
         "**/.DS_Store": true,
         "**/node_modules": true,
         "**/*.js": { "when":  "$(basename).ts" },
-        "**/*.js.map": true
+        "**/*.js.map": true,
+        "dist": true
     }
 }
