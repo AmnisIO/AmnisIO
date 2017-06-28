@@ -338,4 +338,5 @@ c/cmake-build-debug/
 # AmnisIO specific
 .amnisio
 
-
+# Don't ignore bin/index.js
+!bin
