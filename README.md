@@ -76,24 +76,22 @@ touch app.ts
 ```
 with the following contents
 ```ts
-import { ByteStream, Byte, periodic } from 'rivulet';
-import { Sources, Sinks, HIGH, LOW, run, createSinks } from '@amnisio/arduino-uno';
+import { Byte, periodic } from 'rivulet';
+import { Sources, HIGH, LOW, run, createSinks } from '@amnisio/arduino-uno';
 
-function toggle(value: Byte): Byte {
-  return value == HIGH ? LOW : HIGH;
-}
+const toggle = (value: Byte) => value == HIGH ? LOW : HIGH;
 
-function blink(arduino: Sources): Sinks {
-  const sinks: Sinks = createSinks();
-  const sample$: ByteStream = periodic(500);
-  const sampledLED$: ByteStream = sample$.sample(arduino.LED$);
+const blink = (arduino: Sources) => {
+  const sinks = createSinks();
+  const sample$ = periodic(500);
+  const sampledLED$ = sample$.sample(arduino.LED$);
   sinks.LED$ = sampledLED$.map(toggle);
   return sinks;
 }
 
 run(blink);
 ```
-*__NOTE:__ For now the TypeScript code may not compile, we are still working on the type definitions. Also, the TypeScript code shown above may look type-verbose. We are working on a type inference solution that should improve our present situation.*
+*__NOTE:__ For now stream method chaining won't work, so you can't do `periodic(500).sample(arduino.LED$).map(toggle)`. Also, inline anonymous functions are not possible. We are working towards all of the awesome TypeScript features, so keep watching this space.*
 
 Add the following scripts to your `package.json`:
 ```json
