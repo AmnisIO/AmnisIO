@@ -2,10 +2,15 @@
 # yarn lockfile v1
 
 
-"@amnisio/typewriter@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@amnisio/typewriter/-/typewriter-0.0.15.tgz#5df730bd187bab1bc781b89266e4dec24f4f04fa"
+"@amnisio/rivulet@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@amnisio/rivulet/-/rivulet-1.1.0.tgz#44a44ee3c68bf77a71fb4cde4ba5c0d77dc169cd"
+
+"@amnisio/typewriter@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@amnisio/typewriter/-/typewriter-0.0.18.tgz#fadd5eed38a9d89a6e77c0da0535462ea9e48237"
   dependencies:
+    "@amnisio/rivulet" "^1.1.0"
     change-case "^3.0.1"
     fs "^0.0.1-security"
     path "^0.12.7"
