@@ -70,7 +70,22 @@ with the following contents
 }
 ```
 
-Add a source file
+Add the following scripts to your `package.json`:
+```json
+{
+  "initialize": "amnisio init",
+  "build": "amnisio build",
+  "deploy": "amnisio deploy"
+}
+```
+
+Now, time to initialize the project.
+```bash
+npm run initialize
+```
+The arduino uno board configuration (which is the one available at the moment, and entered in the config file) is initialized. The necessary files are downloaded, so please be patient while the initialization happens. Once the initialization is complete, connect your arduino to the computer and get ready (Windows users make sure the required USB drivers are installed).
+
+Add a source file (this is the source that we mentioned in the config, so it should be at the app root)
 ```bash
 touch app.ts
 ```
@@ -92,27 +107,14 @@ run(blink);
 ```
 *__NOTE:__ For now, you will not be able to return sinks directly without calling createSinks(). We are investigating if the API can be improved, so keep watching this space.*
 
-Add the following scripts to your `package.json`:
-```json
-{
-  "initialize": "amnisio init",
-  "build": "amnisio build",
-  "deploy": "amnisio deploy"
-}
-```
 
-Now, time to initialize the project.
-```bash
-npm run initialize
-```
-The arduino uno board configuration (which is the one available at the moment, and entered in the config file) is initialized. The necessary files are downloaded, so please be patient while the initialization happens. Once the initialization is complete, connect your arduino to the computer and get ready (Windows users make sure the required USB drivers are installed).
+You have written our first application using AmnisIO. Congrats!
+Let's deploy the app and see it in full glory:
 ```bash
 npm run deploy
 ```
 
 You have your first AmnisIO project running on your Arduino UNO!
-
-We will expand to more platforms and examples soon.
 
 ## How it works
 
