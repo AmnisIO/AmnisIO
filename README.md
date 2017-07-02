@@ -76,7 +76,7 @@ touch app.ts
 ```
 with the following contents
 ```ts
-import { periodic } from 'rivulet';
+import { periodic } from '@amnisio/rivulet';
 import { Sources, HIGH, LOW, run, createSinks } from '@amnisio/arduino-uno';
 
 const blink = (arduino: Sources) => {
