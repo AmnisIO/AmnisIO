@@ -101,7 +101,7 @@ const blink = (arduino: Sources) => {
       .sample(arduino.LED$)
       .map(led => led == LOW ? HIGH : LOW);
   return sinks;
-}
+};
 
 run(blink);
 ```
