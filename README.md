@@ -105,16 +105,14 @@ const blink = (arduino: Sources) => {
 
 run(blink);
 ```
-*__NOTE:__ For now, you will not be able to return sinks directly without calling createSinks(). We are investigating if the API can be improved, so keep watching this space.*
-
-
 You have written our first application using AmnisIO. Congrats!
+
 Let's deploy the app and see it in full glory:
 ```bash
 npm run deploy
 ```
 
-You have your first AmnisIO project running on your Arduino UNO!
+You have your first AmnisIO project running on your Arduino UNO! Let's celebrate!
 
 ## How it works
 
