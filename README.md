@@ -117,7 +117,7 @@ If you would like to play around, try changing the code to sample `arduino.D2$` 
 
 Go on, try it! Play around with the sampling values to see what happens.
 
-*If you want more examples, we're busy building them, so watch this space.*
+You can find more samples for the Arduino UNO [here](examples/arduino-uno). We're adding more samples as you're reading this.
 
 ## How it works
 
