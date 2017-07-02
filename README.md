@@ -105,14 +105,14 @@ const blink = (arduino: Sources) => {
 
 run(blink);
 ```
-You have written our first application using AmnisIO. Congrats!
+You have written your first application using AmnisIO. Congrats!
 
 Let's deploy the app and see it in full glory:
 ```bash
 npm run deploy
 ```
 
-You have your first AmnisIO project running on your Arduino UNO! Let's celebrate!
+You have your first AmnisIO application running on your Arduino UNO! Let's celebrate!
 
 ## How it works
 
