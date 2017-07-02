@@ -14,7 +14,7 @@ Towards this, we have built a small stream library in C called [rivulet](https:/
 
 We hope to enable you to write, in TypeScript, a blinking LEDs program:
 ```ts
-import { periodic } from 'rivulet';
+import { periodic } from '@amnisio/rivulet';
 import { Sources, Sinks, HIGH, LOW, run } from '@amnisio/arduino-uno';
 
 // Read the LED pin value every 500 ms and toggle it
@@ -76,23 +76,21 @@ touch app.ts
 ```
 with the following contents
 ```ts
-import { Byte, periodic } from 'rivulet';
+import { periodic } from 'rivulet';
 import { Sources, HIGH, LOW, run, createSinks } from '@amnisio/arduino-uno';
-
-const toggle = (value: Byte) => value == HIGH ? LOW : HIGH;
 
 const blink = (arduino: Sources) => {
   const sinks = createSinks();
   sinks.LED$ =
     periodic(500)
       .sample(arduino.LED$)
-      .map(toggle);
+      .map(led => led == LOW ? HIGH : LOW);
   return sinks;
 }
 
 run(blink);
 ```
-*__NOTE:__ For now, inline anonymous functions are not possible. And you are also not able to return sinks directly without calling createSinks(). We are working towards all of the awesome TypeScript features, so keep watching this space.*
+*__NOTE:__ For now, you will not be able to return sinks directly without calling createSinks(). We are working towards not needing to call createSinks(), so keep watching this space.*
 
 Add the following scripts to your `package.json`:
 ```json
