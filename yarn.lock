@@ -6,14 +6,15 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@amnisio/rivulet/-/rivulet-1.1.0.tgz#44a44ee3c68bf77a71fb4cde4ba5c0d77dc169cd"
 
-"@amnisio/typewriter@^0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@amnisio/typewriter/-/typewriter-0.0.18.tgz#fadd5eed38a9d89a6e77c0da0535462ea9e48237"
+"@amnisio/typewriter@^0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@amnisio/typewriter/-/typewriter-0.0.22.tgz#962de3b1454b3d2c1c7b33a8b15bb34a1201760b"
   dependencies:
     "@amnisio/rivulet" "^1.1.0"
     change-case "^3.0.1"
     fs "^0.0.1-security"
     path "^0.12.7"
+    ramda "^0.24.1"
     typescript "^2.3.4"
     yargs "^8.0.2"
 
@@ -499,6 +500,10 @@ process@^0.11.1:
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
+
+ramda@^0.24.1:
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.24.1.tgz#c3b7755197f35b8dc3502228262c4c91ddb6b857"
 
 read-pkg-up@^2.0.0:
   version "2.0.0"
