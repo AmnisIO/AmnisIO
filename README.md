@@ -105,14 +105,19 @@ const blink = (arduino: Sources) => {
 
 run(blink);
 ```
-You have written your first application using AmnisIO. Congrats!
-
+That's your first app! It blinks the LED every 500 milliseconds.
 Let's deploy the app and see it in full glory:
 ```bash
 npm run deploy
 ```
+The TypeScript code is transpiled, and PlatformIO deploys our code to the platform. In a few moments, you should see your UNO blinking its LED.
+Congrats, you have your first AmnisIO application running on your Arduino UNO!
 
-You have your first AmnisIO application running on your Arduino UNO! Let's celebrate!
+If you would like to play around, try changing the code to sample `arduino.D2$` instead of `arduino.LED$`. This will make the LED respond to the value of the D2 pin of the UNO. The LED stays ON whenever the D2 pin is LOW, but once you provide a value to the D2 pin, the LED goes OFF. Kindly note that we sample the D2 pin values so we will only recognize the change once every 500ms.
+
+Go on, try it! Play around with the sampling values to see what happens.
+
+*If you want more examples, we're busy building them, so watch this space.*
 
 ## How it works
 
