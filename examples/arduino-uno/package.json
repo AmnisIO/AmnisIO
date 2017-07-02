@@ -1,0 +1,17 @@
+{
+  "name": "@amnisio/arduino-uno-examples",
+  "version": "1.0.0",
+  "description": "Example programs for the Arduino UNO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sudarsan Balaji <Sudarsan.Balaji@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@amnisio/arduino-uno": "^1.0.1",
+    "@amnisio/rivulet": "^1.1.0",
+    "amnisio": "^0.0.30",
+    "typescript": "^2.4.1"
+  }
+}
