@@ -90,7 +90,7 @@ const blink = (arduino: Sources) => {
 
 run(blink);
 ```
-*__NOTE:__ For now, you will not be able to return sinks directly without calling createSinks(). We are working towards not needing to call createSinks(), so keep watching this space.*
+*__NOTE:__ For now, you will not be able to return sinks directly without calling createSinks(). We are investigating if the API can be improved, so keep watching this space.*
 
 Add the following scripts to your `package.json`:
 ```json
