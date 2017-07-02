@@ -83,15 +83,16 @@ const toggle = (value: Byte) => value == HIGH ? LOW : HIGH;
 
 const blink = (arduino: Sources) => {
   const sinks = createSinks();
-  const sample$ = periodic(500);
-  const sampledLED$ = sample$.sample(arduino.LED$);
-  sinks.LED$ = sampledLED$.map(toggle);
+  sinks.LED$ =
+    periodic(500)
+      .sample(arduino.LED$)
+      .map(toggle);
   return sinks;
 }
 
 run(blink);
 ```
-*__NOTE:__ For now stream method chaining won't work, so you can't do `periodic(500).sample(arduino.LED$).map(toggle)`. Also, inline anonymous functions are not possible. We are working towards all of the awesome TypeScript features, so keep watching this space.*
+*__NOTE:__ For now, inline anonymous functions are not possible. And you are also not able to return sinks directly without calling createSinks(). We are working towards all of the awesome TypeScript features, so keep watching this space.*
 
 Add the following scripts to your `package.json`:
 ```json
