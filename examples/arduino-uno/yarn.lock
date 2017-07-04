@@ -2,15 +2,19 @@
 # yarn lockfile v1
 
 
-"@amnisio/arduino-uno@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@amnisio/arduino-uno/-/arduino-uno-1.0.1.tgz#a8ab3e787809a09fb4c602541cf2ae05cd390e3d"
+"@amnisio/arduino-uno@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@amnisio/arduino-uno/-/arduino-uno-2.0.0.tgz#077b239312687086b72d666c8e4325c243802378"
   dependencies:
-    "@amnisio/rivulet" "^1.1.0"
+    "@amnisio/rivulet" "^2.0.1"
 
 "@amnisio/rivulet@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@amnisio/rivulet/-/rivulet-1.1.0.tgz#44a44ee3c68bf77a71fb4cde4ba5c0d77dc169cd"
+
+"@amnisio/rivulet@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@amnisio/rivulet/-/rivulet-2.0.1.tgz#b9301898ee0c1112cc9b037010fb5cbde37d9e10"
 
 "@amnisio/typewriter@^0.0.23":
   version "0.0.23"

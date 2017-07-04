@@ -9,8 +9,8 @@
   "author": "Sudarsan Balaji <Sudarsan.Balaji@outlook.com>",
   "license": "MIT",
   "devDependencies": {
-    "@amnisio/arduino-uno": "^1.0.1",
-    "@amnisio/rivulet": "^1.1.0",
+    "@amnisio/arduino-uno": "^2.0.0",
+    "@amnisio/rivulet": "^2.0.1",
     "amnisio": "^0.0.30",
     "typescript": "^2.4.1"
   }
