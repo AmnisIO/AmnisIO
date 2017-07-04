@@ -9,9 +9,10 @@ var fetch = require('node-fetch');
 
 var amnisio_dir = __dirname;
 var amnisio_dist_dir = path.join(amnisio_dir, '../dist');
+var amnisio_config_dir = path.join(amnisio_dir, '../dist/configs');
 var amnisio_typewriter_path = path.join(amnisio_dir, '../node_modules/.bin/typewriter');
 var cwd = yargs.argv.cwd || process.cwd();
-var board_configs = require(amnisio_dist_dir).configs;
+var board_configs = require(amnisio_config_dir);
 
 var configPath = findUp.sync(['.amnisio.config.json']);
 var config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {};
