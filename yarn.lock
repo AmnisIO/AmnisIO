@@ -6,9 +6,9 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@amnisio/rivulet/-/rivulet-1.1.0.tgz#44a44ee3c68bf77a71fb4cde4ba5c0d77dc169cd"
 
-"@amnisio/typewriter@^0.0.23":
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/@amnisio/typewriter/-/typewriter-0.0.23.tgz#77dd1e3754fbd1c1b8b2b55846a5c017fc73548f"
+"@amnisio/typewriter@^0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@amnisio/typewriter/-/typewriter-0.0.25.tgz#8573327f184a6b4e18cd66d2e5cde8da6c549380"
   dependencies:
     "@amnisio/rivulet" "^1.1.0"
     change-case "^3.0.1"
