@@ -27,6 +27,7 @@ var argv =
         shell.echo('platformio is required but not found.\n');
         shell.echo('please install platformio-core, refer http://docs.platformio.org/en/latest/installation.html\n');
         shell.echo('also please make sure that platformio executable is added to PATH\n');
+        shell.echo('on bash, use export PATH=~/.platformio/penv/bin:$PATH')
         shell.exit(1);
       }
       var board_configuration = board_configs[argv.b];
