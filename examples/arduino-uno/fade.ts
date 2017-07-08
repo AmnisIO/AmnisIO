@@ -1,11 +1,11 @@
-import { Int, periodic } from '@amnisio/rivulet';
+import { periodic } from '@amnisio/rivulet';
 import { Sources, HIGH, LOW, run, createSinks } from '@amnisio/arduino-uno';
 
 // Initialize brightness and change
 let brightness = 0;
 let change = 5;
 
-const getCurrentBrightness = (event: Int) => {
+const getCurrentBrightness = (event: number) => {
   // Make the change to brightness
   brightness = brightness + change;
   // If the cycle has ended, invert the change
