@@ -1,6 +1,6 @@
 {
   "name": "amnisio",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "Write functional reactive code for various platforms using TypeScript",
   "main": "dist/configs/index.ts",
   "typings": "dist/configs/index.d.ts",
