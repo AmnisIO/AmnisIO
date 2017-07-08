@@ -1,13 +1,13 @@
 {
   "name": "amnisio",
-  "version": "0.0.39",
+  "version": "0.0.49",
   "description": "Write functional reactive code for various platforms using TypeScript",
-  "main": "dist/configs/index.ts",
-  "typings": "dist/configs/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "bin": "bin/index.js",
   "files": [
     "bin",
-    "dist/configs"
+    "dist"
   ],
   "repository": "https://github.com/AmnisIO/AmnisIO.git",
   "author": "Sudarsan Balaji <Sudarsan.Balaji@outlook.com>",
@@ -19,7 +19,7 @@
     "@types/yargs": "^6.6.0"
   },
   "dependencies": {
-    "@amnisio/typewriter": "^0.0.26",
+    "@amnisio/typewriter": "^0.0.31",
     "find-up": "^2.1.0",
     "github": "^9.2.0",
     "node-fetch": "^1.7.1",
