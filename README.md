@@ -38,10 +38,10 @@ The *Arduino UNO* used here is an example, we will be building towards every pla
 | :--- | :--- | :--- |
 | Stream Library (C) | Ready | [rivulet](https://github.com/AmnisIO/rivulet) |
 | Stream Library (TS) | Ready | [rivulet](https://github.com/AmnisIO/packages/tree/master/rivulet) |
-| Board/Framework (C) | **FAILING** | [gyrus](https://github.com/AmnisIO/gyrus/tree/master/arduino_uno) |
+| Board/Framework (C) | Pins D2 to D13/LED are available, See https://github.com/AmnisIO/gyrus/issues/8 | [gyrus](https://github.com/AmnisIO/gyrus/tree/master/arduino_uno) |
 | Board/Framework (TS) | Ready for Arduino UNO | [gyrus](https://github.com/AmnisIO/packages/tree/master/arduino-uno) |
 | Transpiler (TS/C) | Ready | [typewriter](https://github.com/AmnisIO/typewriter) |
-| AmnisIO CLI (TS) | **FAILING** | [AmnisIO](https://github.com/AmnisIO/AmnisIO) |
+| AmnisIO CLI (TS) | Ready | [AmnisIO](https://github.com/AmnisIO/AmnisIO) |
 
 ## Getting Started
 
