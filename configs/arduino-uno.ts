@@ -3,7 +3,6 @@ import { BoardConfiguration } from './types';
 export const config: BoardConfiguration = {
   board: 'uno',
   dependencies: [
-    '@amnisio/rivulet',
     '@amnisio/arduino-uno'
   ],
   libraries: [
