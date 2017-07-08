@@ -11,7 +11,7 @@ var fetch = require('node-fetch');
 var cwd = yargs.argv.cwd || process.cwd();
 var amnisio_dir = path.join(cwd, 'node_modules/amnisio');
 var amnisio_dist_dir = path.join(amnisio_dir, 'dist');
-var amnisio_config_dir = path.join(amnisio_dir, 'dist/configs');
+var amnisio_config_dir = amnisio_dist_dir;
 var amnisio_typewriter_path = path.join(cwd, 'node_modules/.bin/typewriter');
 var board_configs = require(amnisio_config_dir).configs;
 
