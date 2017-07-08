@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@amnisio/typewriter@^0.0.27":
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/@amnisio/typewriter/-/typewriter-0.0.27.tgz#dd457fe679e6fd95cbc7fbcade2f6093175f0b3b"
+"@amnisio/typewriter@^0.0.28":
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/@amnisio/typewriter/-/typewriter-0.0.28.tgz#0831289f85e3468a2a4b73200262e7f4f1893904"
   dependencies:
     change-case "^3.0.1"
     fs "^0.0.1-security"
