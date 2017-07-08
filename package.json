@@ -2,12 +2,12 @@
   "name": "amnisio",
   "version": "0.0.48",
   "description": "Write functional reactive code for various platforms using TypeScript",
-  "main": "dist/configs/index.ts",
-  "typings": "dist/configs/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "bin": "bin/index.js",
   "files": [
     "bin",
-    "dist/configs"
+    "dist"
   ],
   "repository": "https://github.com/AmnisIO/AmnisIO.git",
   "author": "Sudarsan Balaji <Sudarsan.Balaji@outlook.com>",
