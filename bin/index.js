@@ -13,6 +13,7 @@ var amnisio_dir = path.join(cwd, 'node_modules/amnisio');
 var amnisio_dist_dir = path.join(amnisio_dir, 'dist');
 var amnisio_config_dir = amnisio_dist_dir;
 var amnisio_typewriter_path = path.join(cwd, 'node_modules/.bin/typewriter');
+if (!fs.existsSync(amnisio_typewriter_path)) amnisio_typewriter_path = path.join(amnisio_dir, 'node_modules/.bin/typewriter');
 var board_configs = require(amnisio_config_dir).configs;
 
 var configPath = findUp.sync(['.amnisio.config.json']);
@@ -23,8 +24,8 @@ var argv =
     .config(config)
     .usage('Usage: $0 <command> [options]')
     // Initialize
-    .command('init', 'Initialize to a particular board configuration', () => {}, argv => {
-      if(!shell.which('platformio') || !shell.which('pio')) {
+    .command('init', 'Initialize to a particular board configuration', () => { }, argv => {
+      if (!shell.which('platformio') || !shell.which('pio')) {
         shell.echo('platformio is required but not found.\n');
         shell.echo('please install platformio-core, refer http://docs.platformio.org/en/latest/installation.html\n');
         shell.echo('also please make sure that platformio executable is added to PATH\n');
@@ -78,7 +79,7 @@ var argv =
     .alias('h', 'help')
     .example('$0 init -b uno', 'Initialize to a the Arduino Uno board configuration')
     // Build
-    .command('build', 'Build the AmnisIO project', () => {}, argv => {
+    .command('build', 'Build the AmnisIO project', () => { }, argv => {
       var source = path.join(cwd, argv.source || 'app.ts');
       var output = path.join(cwd, '.amnisio', 'src', argv.output || 'app.c');
       shell.exec(amnisio_typewriter_path + ' --file ' + source + ' --outfile ' + output);
@@ -86,12 +87,12 @@ var argv =
     })
     .example('$0 build', 'Build the AmnisIO project')
     // Clean
-    .command('clean', 'Clean the AmnisIO project', () => {}, argv => {
+    .command('clean', 'Clean the AmnisIO project', () => { }, argv => {
       shell.exec('platformio run -d .amnisio -t clean');
     })
     .example('$0 clean', 'Clean the AmnisIO project')
     // Deploy
-    .command('deploy', 'Deploy the AmnisIO project to the selected platform', () => {}, argv => {
+    .command('deploy', 'Deploy the AmnisIO project to the selected platform', () => { }, argv => {
       var source = path.join(cwd, argv.source || 'app.ts');
       var output = path.join(cwd, '.amnisio', 'src', argv.output || 'app.c');
       shell.exec(amnisio_typewriter_path + ' --file ' + source + ' --outfile ' + output);
