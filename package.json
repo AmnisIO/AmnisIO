@@ -19,7 +19,7 @@
     "@types/yargs": "^6.6.0"
   },
   "dependencies": {
-    "@amnisio/typewriter": "^0.0.31",
+    "@amnisio/typewriter": "0.0.32",
     "find-up": "^2.1.0",
     "github": "^9.2.0",
     "node-fetch": "^1.7.1",
