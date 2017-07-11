@@ -3,15 +3,11 @@
   "version": "1.0.0",
   "description": "Example programs for the Arduino UNO",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Sudarsan Balaji <Sudarsan.Balaji@outlook.com>",
   "license": "MIT",
   "devDependencies": {
-    "@amnisio/arduino-uno": "^2.0.0",
-    "@amnisio/rivulet": "^2.0.1",
-    "amnisio": "^0.0.30",
-    "typescript": "^2.4.1"
+    "@amnisio/arduino-uno": "^3.0.0",
+    "@amnisio/rivulet": "^3.0.0",
+    "typescript": "2.4.1"
   }
 }
